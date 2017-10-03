@@ -1,16 +1,6 @@
 # regressions
-cognitiveindex06_all ~ wmh06 + HV_06_ml_norm
-verbalmemory06_all ~ wmh06 + HV_06_ml_norm
-visuospatialmemory06_all ~ wmh06 + HV_06_ml_norm
-immediatememory06_all ~ wmh06 + HV_06_ml_norm
-delayedmemory06_all ~ wmh06 + HV_06_ml_norm
-workingmemory06_all ~ wmh06 + HV_06_ml_norm
-psychomotorspeed06_all ~ wmh06 + HV_06_ml_norm
-fluency06_all ~ wmh06 + HV_06_ml_norm
-responseinhibition06_all ~ wmh06 + HV_06_ml_norm
-attention06_all ~ wmh06 + HV_06_ml_norm
-executivefunction06_all ~ wmh06 + HV_06_ml_norm
+cognitiveindex06_all ~ wmh06 + hv06
+
 
 # covariances
-wmh06 ~~ HV_06_ml_norm
-
+wmh06 ~~ hv06
