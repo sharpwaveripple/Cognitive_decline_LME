@@ -1,10 +1,16 @@
- # regressions
-    bartheltotal15 ~ aes15_total + cesd15_total
-    bartheltotal11 ~ aes11_total + cesd11_total
-    aes15_total ~ aes11_total + cesd11_total
-    cesd15_total ~ aes11_total + cesd11_total
+# regressions
+cognitiveindex06_all ~ wmh06 + HV_06_ml_norm
+verbalmemory06_all ~ wmh06 + HV_06_ml_norm
+visuospatialmemory06_all ~ wmh06 + HV_06_ml_norm
+immediatememory06_all ~ wmh06 + HV_06_ml_norm
+delayedmemory06_all ~ wmh06 + HV_06_ml_norm
+workingmemory06_all ~ wmh06 + HV_06_ml_norm
+psychomotorspeed06_all ~ wmh06 + HV_06_ml_norm
+fluency06_all ~ wmh06 + HV_06_ml_norm
+responseinhibition06_all ~ wmh06 + HV_06_ml_norm
+attention06_all ~ wmh06 + HV_06_ml_norm
+executivefunction06_all ~ wmh06 + HV_06_ml_norm
 
-  # covariances
-    aes15_total ~~ cesd15_total
-    aes11_total ~~ cesd11_total 
+# covariances
+wmh06 ~~ HV_06_ml_norm
 
