@@ -1,10 +1,6 @@
- # regressions
-    bartheltotal15 ~ aes15_total + cesd15_total
-    bartheltotal11 ~ aes11_total + cesd11_total
-    aes15_total ~ aes11_total + cesd11_total
-    cesd15_total ~ aes11_total + cesd11_total
+# regressions
+cognitiveindex06_all ~ wmh06 + hv06
 
-  # covariances
-    aes15_total ~~ cesd15_total
-    aes11_total ~~ cesd11_total 
 
+# covariances
+wmh06 ~~ hv06
