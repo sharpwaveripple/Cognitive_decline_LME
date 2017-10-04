@@ -1,0 +1,19 @@
+# latent variable patterns
+i_wmh =~ 1*wmh06 + 1*wmh11 + 1*wmh15
+s_wmh =~ 0*wmh06 + 1*wmh11 + 2*wmh15
+
+i_hv =~ 1*hv06 + 1*hv11 + 1*hv15
+s_hv =~ 0*hv06 + 1*hv11 + 2*hv15
+
+s_int =~ 0*wmh06*hv06 + 1*wmh11*hv11 + 2*wmh15*hv15
+
+i_ps =~ 1*ps06 + 1*ps11 + 1*ps15
+s_ps =~ 0*ps06 + 1*ps11 + 2*ps15
+
+# regressions
+s_ps ~ s_wmh + s_hv + s_int
+i_ps ~ i_wmh + i_hv
+
+# covariances
+i_wmh ~~ s_wmh
+i_hv ~~ s_hv
