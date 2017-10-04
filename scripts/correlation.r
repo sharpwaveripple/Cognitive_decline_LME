@@ -1,7 +1,7 @@
 library(psych)
 
-datafile <- "path_to_file_here"
+variables <- c("log_WMH_2006","log_WMH_2006")
 
+datafile <- "../data/RUNDMC_datasheet_long.csv"
 df <- read.csv(datafile)
-corr.mat <- corr.test(df)
-summary(corr.mat)
+print(names(df))
