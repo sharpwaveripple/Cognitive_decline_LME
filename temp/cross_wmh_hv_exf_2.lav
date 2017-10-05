@@ -1,0 +1,6 @@
+# regressions
+exf06 ~ hv06 + logwmh06
+
+               
+# covariances
+hv06 ~~ logwmh06

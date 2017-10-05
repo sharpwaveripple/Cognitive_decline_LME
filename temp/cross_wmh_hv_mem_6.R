@@ -30,7 +30,7 @@ ThreeFactorSEM <- function(var1, var1names, var2, var2names, var3, var3names, va
   sem4form <- paste(var1names, var4names, sep=" ~~ ")
   sem5form <- paste(var2names, var4names, sep=" ~~ ")
   
-  test <- file("../../temp/cross_wmh_hv_ps_6.lav")
+  test <- file("../../temp/cross_wmh_hv_mem_6.lav")
   writeLines(c("# regressions",
                sem1form,
                sem2form,
@@ -47,15 +47,16 @@ ThreeFactorSEM <- function(var1, var1names, var2, var2names, var3, var3names, va
 #MTL vols?
 volVars <- c("logwmh")
 hpcVars <- c("hv")
-cognVars <- c("ps")
+cognVars <- c("mem")
 intVars <- c("int")
 timepoints <- c("06")
 datafile <- "../../data/RUNDMC_datasheet_long.csv"
 df <- read.csv(datafile, header=T)
 
-ps <- c("pp1sat", "stroop1sat", "stroop2sat", "ldstcorrect")
-psVars <- paste(ps, "06", sep="")
-df$ps06 <- rowSums(df[psVars])
+mem <- c("wvlt123correctmean", "wvltdelayrecall", "reyimmrecalltotalscore",
+         "reydelayrecalltotalscore", "pp2sat", "pp3sat")
+memVars <- paste(mem, "06", sep="")
+df$mem06 <- rowSums(df[memVars])
 
 df$int06 <- df$logwmh06*df$wmh06
 
@@ -82,7 +83,7 @@ for (i in hpcVars) {
 }
 
 
-model <- readLines("../../temp/cross_wmh_hv_ps_6.lav")
+model <- readLines("../../temp/cross_wmh_hv_mem_6.lav")
 fit <- sem(model,
            data=df.subset)
 summary(fit, standardized=T, rsquare=T)

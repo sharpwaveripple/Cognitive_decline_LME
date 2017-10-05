@@ -1,0 +1,9 @@
+# regressions
+mem06 ~ hv06 + logwmh06
+mem06 ~ int06
+
+               
+# covariances
+hv06 ~~ logwmh06
+hv06 ~~ int06
+logwmh06 ~~ int06

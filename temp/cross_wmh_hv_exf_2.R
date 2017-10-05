@@ -21,25 +21,18 @@ MakeLatentStrings <- function(latVar, latVarNames) {
 }
 
 
-ThreeFactorSEM <- function(var1, var1names, var2, var2names, var3, var3names, var4, var4names) {
+ThreeFactorSEM <- function(var1, var1names, var2, var2names, var3, var3names) {
   
   sem1form <- paste(var3names, "~", paste(var1names, var2names, sep=" + "))
-  sem2form <- paste(var3names, var4names, sep=" ~ ")
-  
-  sem3form <- paste(var1names, var2names, sep=" ~~ ")
-  sem4form <- paste(var1names, var4names, sep=" ~~ ")
-  sem5form <- paste(var2names, var4names, sep=" ~~ ")
-  
-  test <- file("../../temp/cross_wmh_hv_ps_6.lav")
+  sem2form <- paste(var1names, var2names, sep=" ~~ ")
+    
+  test <- file("../../temp/cross_wmh_hv_exf_2.lav")
   writeLines(c("# regressions",
                sem1form,
-               sem2form,
                "
                ",
                "# covariances",
-               sem3form,
-               sem4form,
-               sem5form),
+               sem2form),
              test)
   close(test) 
 }
@@ -47,34 +40,28 @@ ThreeFactorSEM <- function(var1, var1names, var2, var2names, var3, var3names, va
 #MTL vols?
 volVars <- c("logwmh")
 hpcVars <- c("hv")
-cognVars <- c("ps")
-intVars <- c("int")
+cognVars <- c("exf")
 timepoints <- c("06")
 datafile <- "../../data/RUNDMC_datasheet_long.csv"
 df <- read.csv(datafile, header=T)
 
-ps <- c("pp1sat", "stroop1sat", "stroop2sat", "ldstcorrect")
-psVars <- paste(ps, "06", sep="")
-df$ps06 <- rowSums(df[psVars])
+exf <- c("fluencyanimals", "fluencyjobs", "stroopinterference", "vsattotalsat")
+exfVars <- paste(exf, "06", sep="")
+df$exf06 <- rowSums(df[exfVars])
 
-df$int06 <- df$logwmh06*df$wmh06
 
 for (i in hpcVars) {
   for (j in volVars) {
     for (k in cognVars) {
-      for (l in intVars) {
-        variables <- c(i, j, k, l)
-        varNames <- c(as.vector(outer(variables, timepoints, paste, sep="")))
-        vecLen <- length(varNames)
-        hpcNames <- varNames[seq(1, vecLen, 4)]
-        volNames <- varNames[seq(2, vecLen, 4)]
-        cognNames <- varNames[seq(3, vecLen, 4)]
-        intNames <- varNames[seq(4, vecLen, 4)]
-        df.subset <- df[varNames]
-        df.subset <- df.subset[complete.cases(df.subset), ]
-        ThreeFactorSEM(i, hpcNames, j, volNames, k, cognNames, l, intNames)
-      }
-      
+      variables <- c(i, j, k)
+      varNames <- c(as.vector(outer(variables, timepoints, paste, sep="")))
+      vecLen <- length(varNames)
+      hpcNames <- varNames[seq(1, vecLen, 3)]
+      volNames <- varNames[seq(2, vecLen, 3)]
+      cognNames <- varNames[seq(3, vecLen, 3)]
+      df.subset <- df[varNames]
+      df.subset <- df.subset[complete.cases(df.subset), ]
+      ThreeFactorSEM(i, hpcNames, j, volNames, k, cognNames)
     }
     
   }
@@ -82,7 +69,7 @@ for (i in hpcVars) {
 }
 
 
-model <- readLines("../../temp/cross_wmh_hv_ps_6.lav")
+model <- readLines("../../temp/cross_wmh_hv_exf_2.lav")
 fit <- sem(model,
            data=df.subset)
 summary(fit, standardized=T, rsquare=T)
