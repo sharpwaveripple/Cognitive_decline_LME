@@ -1,0 +1,17 @@
+ #model 1:slopes covary
+ chisq     df pvalue    cfi  rmsea 
+20.198  7.000  0.005  0.994  0.084 
+
+model 2: hv slope predicted by wmh slope
+ chisq     df pvalue    cfi  rmsea 
+21.681  9.000  0.010  0.995  0.073
+
+model 3: wmh slope predicted by hv slope
+ chisq     df pvalue    cfi  rmsea 
+54.550  9.000  0.000  0.981  0.137 
+
+discussion points:
+-what is our hypothesis to the relationship between wmh and hv? is atrophy
+independent of vascular pathology?
+-modelling cognitive function in this same manner longitudinally (no
+convergence)
