@@ -2,6 +2,9 @@ library(mice)
 library(lavaan)
 library(semTools)
 library(psych)
+library(semPlot)
+library(ggraph)
+library(ggplot2)
 
 impute.data <- function(data, nImps, imp.method, nIter, nseed) {
   
@@ -68,3 +71,8 @@ model.int.ps <- readLines(modelfile.int.ps)
 fit.int.ps <- growth(model.int.ps, data=df.imp.ps)
 summary(fit.int.ps)
 fitMeasures(fit.int.ps)
+
+semPaths(fit.int.ps)
+
+semPaths(fit.int.ps, "stand", sizeMan = 14, label.cex = 2.3, shapeMan = "square", nCharNodes = 0, edge.label.cex = 3,
+         residuals=F, edge.color = "black", edge.width = 0.5)
