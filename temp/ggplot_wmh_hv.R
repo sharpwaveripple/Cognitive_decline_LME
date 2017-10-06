@@ -54,3 +54,17 @@ hv.age.plot <- ggplot(dem.incl, aes(x=age, y=hv, group=rundmcs)) +
   stat_smooth(aes(group=1), method=lm, colour="#cc0000", fill="#c3c3c3", alpha=0.6) +
   theme_bw(base_size=18)
 print(hv.age.plot)
+
+wmhprop.age.plot <- ggplot(dem.incl, aes(x=age, y=wmhprop, group=rundmcs)) +
+  geom_line() +
+  geom_point() +
+  stat_smooth(aes(group=1), method=lm, colour="#cc0000", fill="#c3c3c3", alpha=0.6) +
+  theme_bw(base_size=18)
+print(wmhprop.age.plot)
+
+hvprop.age.plot <- ggplot(dem.incl, aes(x=age, y=hvprop, group=rundmcs)) +
+  geom_line() +
+  geom_point() +
+  stat_smooth(aes(group=1), method=lm, colour="#cc0000", fill="#c3c3c3", alpha=0.6) +
+  theme_bw(base_size=18)
+print(hvprop.age.plot)

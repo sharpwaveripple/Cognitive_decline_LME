@@ -11,6 +11,10 @@ df$hvratio06 <- df$hv06 / df$tbv06
 df$hvratio11 <- df$hv11 / df$tbv11
 df$hvratio15 <- df$hv15 / df$tbv15
 
+df$hvprop06 <- (df$hv06 / df$tbv06)*100
+df$hvprop11 <- (df$hv11 / df$tbv11)*100
+df$hvprop15 <- (df$hv15 / df$tbv15)*100
+
 hist(df$hvratio06)
 hist(df$hvratio11)
 hist(df$hvratio15)
