@@ -1,0 +1,6 @@
+hvratio_slope =~ 0*hvratio06 + 1*hvratio11 + 2*hvratio15
+hvratio_int =~ 1*hvratio06 + 1*hvratio11 + 1*hvratio15
+wmhratio_slope =~ 0*wmhratio06 + 1*wmhratio11 + 2*wmhratio15
+wmhratio_int =~ 1*wmhratio06 + 1*wmhratio11 + 1*wmhratio15
+hvratio_slope ~~ wmhratio_slope
+hvratio_int ~~ wmhratio_int
