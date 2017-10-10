@@ -3,8 +3,17 @@ library(lavaan)
 library(semTools)
 library(psych)
 
-datafile <- "../../data/RUNDMC_datasheet_long.csv"
+datafile <- "data/RUNDMC_datasheet_long.csv"
 df <- read.csv(datafile, header=T)
+
+# Ratios
+df$hvratio06 <- (df$hv06 / df$tbv06)*1000
+df$hvratio11 <- (df$hv11 / df$tbv11)*1000
+df$hvratio15 <- (df$hv15 / df$tbv15)*1000
+
+df$wmhratio06 <- log((df$wmh06 / df$tbv06)*100000)
+df$wmhratio11 <- log((df$wmh11 / df$tbv11)*100000)
+df$wmhratio15 <- log((df$wmh15 / df$tbv15)*100000)
 
 # Psychomotor speed
 df$ps06 <- df$pp1sat06 + df$stroop1sat06 + df$stroop2sat06 + df$ldstcorrect06
@@ -36,23 +45,25 @@ df$psexf15 <- df$pp1sat15 + df$stroop1sat15 + df$stroop2sat15 + df$ldstcorrect15
 
 
 # Correlations
-variables <- c("wmh06", "hv06", "ps06", "mem06", "exf06",
-                 "wmh11", "hv11", "ps11", "mem11", "exf11",
-                 "wmh15", "hv15", "ps15", "mem15", "exf15")
+variables <- c("wmh06", "wmhratio06", "hv06", "hvratio06", "ps06", "mem06", "exf06", "psexf06",
+                 "wmh11", "wmhratio11", "hv11", "hvratio11", "ps11", "mem11", "exf11", "psexf11",
+                 "wmh15", "wmhratio15", "hv15", "hvratio15", "ps15", "mem15", "exf15", "psexf15")
 df.var <- df[variables]
 
 df.var.incl <- df.var[complete.cases(df.var), ]
 
-variables06 <- c("wmh06", "hv06", "ps06", "mem06", "exf06")
+variables06 <- c("wmh06", "hv06", "ps06", "mem06", "exf06", "psexf06")
 df.var.incl06 <- df.var.incl[variables06]
-variables11 <- c("wmh11", "hv11", "ps11", "mem11", "exf11")
+variables11 <- c("wmh11", "hv11", "ps11", "mem11", "exf11", "psexf11")
 df.var.incl11 <- df.var.incl[variables11]
-variables15 <- c("wmh15", "hv15", "ps15", "mem15", "exf15")
+variables15 <- c("wmh15", "hv15", "ps15", "mem15", "exf15", "psexf15")
 df.var.incl15 <- df.var.incl[variables15]
 
 corr06.mat <- corr.test(df.var.incl06)
 corr11.mat <- corr.test(df.var.incl11)
 corr15.mat <- corr.test(df.var.incl15)
+
+
 
 # Table
 df.cross.wmh <- as.data.frame(matrix(0, ncol=6, nrow=4))
@@ -80,3 +91,17 @@ df.cross.hv[1,6] <- round(corr15.mat$p[2,1], digits=3)
 df.cross.hv[2:4,6] <- round(corr15.mat$p[3:5,2], digits=3)
 rownames(df.cross.hv) <- c("wmh", "psychomotor speed", "memory", "executive function")
 colnames(df.cross.hv) <- c("hv06", "p-val", "hv11", "p-val", "hv15", "p-val")
+
+
+# ratios
+variables15ratio <- c("wmhratio15", "hvratio15", "mem15", "psexf15")
+df.var.incl15ratio <- df.var.incl[variables15ratio]
+corr15ratio.mat <- corr.test(df.var.incl15ratio)
+
+variables06ratio <- c("wmhratio06", "hvratio06", "mem06", "psexf06")
+df.var.incl06ratio <- df.var.incl[variables06ratio]
+corr06ratio.mat <- corr.test(df.var.incl06ratio)
+
+variables11ratio <- c("wmhratio11", "hvratio11", "mem11", "psexf11")
+df.var.incl11ratio <- df.var.incl[variables11ratio]
+corr11ratio.mat <- corr.test(df.var.incl11ratio)

@@ -1,0 +1,7 @@
+# regressions
+mem15 ~ wmhratio15 + hvratio15 + age15
+wmhratio15 ~ age15
+hvratio15 ~ age15
+               
+# covariances
+wmhratio15 ~~ hvratio15
