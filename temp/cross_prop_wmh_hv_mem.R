@@ -21,33 +21,39 @@ MakeLatentStrings <- function(latVar, latVarNames) {
 }
 
 
-ThreeFactorSEM <- function(var1, var1names, var2, var2names, var3, var3names, var4, var4names) {
+ThreeFactorSEM <- function(var1, var1names, var2, var2names, var3, var3names) {
   
   sem1form <- paste(var3names, "~", paste(var1names, var2names, sep=" + "))
-  sem2form <- paste(var3names, var4names, sep=" ~ ")
+  sem2form <- paste(var1names, var2names, sep=" ~~ ")
   
-  test <- file("../../temp/cross_wmh_hv_ps_5.lav")
+  test <- file("temp/cross_prop_wmh_hv_mem.lav")
   writeLines(c("# regressions",
                sem1form,
+               "
+               ",
+               "# covariances",
                sem2form),
              test)
   close(test) 
 }
 
 #MTL vols?
-volVars <- c("logwmh")
-hpcVars <- c("hv")
-cognVars <- c("ps")
+volVars <- c("wmhratio")
+hpcVars <- c("hvratio")
+cognVars <- c("mem")
 intVars <- c("int")
-timepoints <- c("06")
-datafile <- "../../data/RUNDMC_datasheet_long.csv"
+timepoints <- c("15")
+datafile <- "data/RUNDMC_datasheet_long.csv"
 df <- read.csv(datafile, header=T)
 
-ps <- c("pp1sat", "stroop1sat", "stroop2sat", "ldstcorrect")
-psVars <- paste(ps, "06", sep="")
-df$ps06 <- rowSums(df[psVars])
-
-df$int06 <- df$logwmh06*df$wmh06
+df$wmhratio15 <- log((df$wmh15 / df$tbv15)*100000)
+df$hvratio15 <- (df$hv15 / df$tbv15)*1000
+df$mem15 <- df$wvlt123correctmean15 + df$wvltdelayrecall15 + 
+  df$reyimmrecalltotalscore15 +	df$reydelayrecalltotalscore15 +
+  df$pp2sat15 + df$pp3sat15
+df$psexf15 <- df$pp1sat15 + df$stroop1sat15 + df$stroop2sat15 + df$ldstcorrect15 +
+  df$fluencysupermarket15 + df$fluencyjobs15 + df$stroopinterference15 +	df$vsattotalsat15
+df$int15 <- df$wmhratio15*df$hvratio15
 
 for (i in hpcVars) {
   for (j in volVars) {
@@ -62,7 +68,7 @@ for (i in hpcVars) {
         intNames <- varNames[seq(4, vecLen, 4)]
         df.subset <- df[varNames]
         df.subset <- df.subset[complete.cases(df.subset), ]
-        ThreeFactorSEM(i, hpcNames, j, volNames, k, cognNames, l, intNames)
+        ThreeFactorSEM(i, hpcNames, j, volNames, k, cognNames)
       }
       
     }
@@ -72,7 +78,7 @@ for (i in hpcVars) {
 }
 
 
-model <- readLines("../../temp/cross_wmh_hv_ps_5.lav")
+model <- readLines("temp/cross_prop_wmh_hv_mem.lav")
 fit <- sem(model,
            data=df.subset)
 summary(fit, standardized=T, rsquare=T)
