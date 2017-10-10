@@ -94,14 +94,14 @@ colnames(df.cross.hv) <- c("hv06", "p-val", "hv11", "p-val", "hv15", "p-val")
 
 
 # ratios
-variables15ratio <- c("wmhratio15", "hvratio15", "mem15", "psexf15")
+variables15ratio <- c("wmhratio15", "hvratio15", "mem15", "ps15", "exf15", "psexf15")
 df.var.incl15ratio <- df.var.incl[variables15ratio]
 corr15ratio.mat <- corr.test(df.var.incl15ratio)
 
-variables06ratio <- c("wmhratio06", "hvratio06", "mem06", "psexf06")
+variables06ratio <- c("wmhratio06", "hvratio06", "mem06", "ps06", "exf06", "psexf06")
 df.var.incl06ratio <- df.var.incl[variables06ratio]
 corr06ratio.mat <- corr.test(df.var.incl06ratio)
 
-variables11ratio <- c("wmhratio11", "hvratio11", "mem11", "psexf11")
+variables11ratio <- c("wmhratio11", "hvratio11", "mem11", "ps11", "exf11", "psexf11")
 df.var.incl11ratio <- df.var.incl[variables11ratio]
 corr11ratio.mat <- corr.test(df.var.incl11ratio)

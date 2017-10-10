@@ -51,66 +51,66 @@ df.var <- df[variables]
 df.var.incl <- df.var[complete.cases(df.var), ]
 
 # psexf
-variables.psexf <- c("wmhratio06", "hvratio06", "psexf06",
-               "wmhratio11", "hvratio11", "psexf11",
+variables.psexf15 <- c("wmhratio06", "hvratio06",
+               "wmhratio11", "hvratio11",
                "wmhratio15", "hvratio15", "psexf15")
-df.var.psexf <- df[variables.psexf]
-df.var.psexf.incl <- df.var.psexf[complete.cases(df.var.psexf), ]
+df.var.psexf15 <- df[variables.psexf15]
+df.var.psexf15.incl <- df.var.psexf15[complete.cases(df.var.psexf15), ]
 
-modelfile.psexf <- paste("temp/long_wmh_hv_psexf.lav", sep="/")
-model.psexf <- readLines(modelfile.psexf)
+modelfile.psexf15 <- paste("temp/long_wmh_hv_psexf15.lav", sep="/")
+model.psexf15 <- readLines(modelfile.psexf15)
 
-fit.psexf <- growth(model.psexf, data=df.var.psexf.incl)
-fitMeasures(fit.psexf)
-summary(fit.psexf)
-semPaths(fit.psexf)
+fit.psexf15 <- growth(model.psexf15, data=df.var.psexf15.incl)
+fitMeasures(fit.psexf15)
+summary(fit.psexf15)
+semPaths(fit.psexf15)
 
 
 
 # mem
-variables.mem <- c("wmhratio06", "hvratio06", "mem06",
-               "wmhratio11", "hvratio11", "mem11",
+variables.mem15 <- c("wmhratio06", "hvratio06",
+               "wmhratio11", "hvratio11",
                "wmhratio15", "hvratio15", "mem15")
-df.var.mem <- df[variables.mem]
-df.var.mem.incl <- df.var.mem[complete.cases(df.var.mem), ]
+df.var.mem15 <- df[variables.mem15]
+df.var.mem15.incl <- df.var.mem15[complete.cases(df.var.mem15), ]
 
-modelfile.mem <- paste("temp/long_wmh_hv_mem.lav", sep="/")
-model.mem <- readLines(modelfile.mem)
+modelfile.mem15 <- paste("temp/long_wmh_hv_mem15.lav", sep="/")
+model.mem15 <- readLines(modelfile.mem15)
 
-fit.mem <- growth(model.mem, data=df.var.mem.incl)
-fitMeasures(fit.mem)
-summary(fit.mem)
-semPaths(fit.mem)
+fit.mem15 <- growth(model.mem15, data=df.var.mem15.incl)
+fitMeasures(fit.mem15)
+summary(fit.mem15)
+semPaths(fit.mem15)
 
 
 
 # ps
-variables.ps <- c("wmhratio06", "hvratio06", "ps06",
-                     "wmhratio11", "hvratio11", "ps11",
+variables.ps15 <- c("wmhratio06", "hvratio06",
+                     "wmhratio11", "hvratio11",
                      "wmhratio15", "hvratio15", "ps15")
-df.var.ps <- df[variables.ps]
-df.var.ps.incl <- df.var.ps[complete.cases(df.var.ps), ]
+df.var.ps15 <- df[variables.ps15]
+df.var.ps15.incl <- df.var.ps15[complete.cases(df.var.ps15), ]
 
-modelfile.ps <- paste("temp/long_wmh_hv_ps.lav", sep="/")
-model.ps <- readLines(modelfile.ps)
+modelfile.ps15 <- paste("temp/long_wmh_hv_ps15.lav", sep="/")
+model.ps15 <- readLines(modelfile.ps15)
 
-fit.ps <- growth(model.ps, data=df.var.ps.incl)
-fitMeasures(fit.ps)
-summary(fit.ps)
-semPaths(fit.ps)
+fit.ps15 <- growth(model.ps15, data=df.var.ps15.incl)
+fitMeasures(fit.ps15)
+summary(fit.ps15)
+semPaths(fit.ps15)
 
 
-# psexf
-variables.exf <- c("wmhratio06", "hvratio06", "exf06",
-                     "wmhratio11", "hvratio11", "exf11",
+# exf
+variables.exf15 <- c("wmhratio06", "hvratio06",
+                     "wmhratio11", "hvratio11",
                      "wmhratio15", "hvratio15", "exf15")
-df.var.exf <- df[variables.exf]
-df.var.exf.incl <- df.var.exf[complete.cases(df.var.exf), ]
+df.var.exf15 <- df[variables.exf15]
+df.var.exf15.incl <- df.var.exf15[complete.cases(df.var.exf15), ]
 
-modelfile.exf <- paste("temp/long_wmh_hv_exf.lav", sep="/")
-model.exf <- readLines(modelfile.exf)
+modelfile.exf15 <- paste("temp/long_wmh_hv_exf15.lav", sep="/")
+model.exf15 <- readLines(modelfile.exf15)
 
-fit.exf <- growth(model.exf, data=df.var.exf.incl)
-fitMeasures(fit.exf)
-summary(fit.exf)
-semPaths(fit.exf)
+fit.exf15 <- growth(model.exf15, data=df.var.exf15.incl)
+fitMeasures(fit.exf15)
+summary(fit.exf15)
+semPaths(fit.exf15)

@@ -1,6 +1,6 @@
 # latent variable patterns
-i_mem =~ 1*mem06 + 1*mem11 + 1*mem15
-s_mem =~ 0*mem06 + 1*mem11 + 2*mem15
+i_ps =~ 1*ps06 + 1*ps11 + 1*ps15
+s_ps =~ 0*ps06 + 1*ps11 + 2*ps15
 
 i_wmh =~ 1*wmhratio06 + 1*wmhratio11 + 1*wmhratio15
 s_wmh =~ 0*wmhratio06 + 1*wmhratio11 + 2*wmhratio15
@@ -10,8 +10,5 @@ s_hv =~ 0*hvratio06 + 1*hvratio11 + 2*hvratio15
 
 
 # regressions
-s_mem ~ s_wmh + s_hv
+s_ps ~ s_wmh + s_hv
 
-# covariance
-i_wmh ~~ s_wmh
-i_hv ~~ s_hv
