@@ -27,7 +27,7 @@ df.var.incl <- df.var[complete.cases(df.var), ]
 # dem
 variables.dem15 <- c("wmhratio06", "hvratio06",
                "wmhratio11", "hvratio11",
-               "wmhratio15", "hvratio15", "dementiai15", "dementiacat")
+               "wmhratio15", "hvratio15", "dementiai15")
 df.var.dem15 <- df[variables.dem15]
 df.var.dem15.incl <- df.var.dem15[complete.cases(df.var.dem15), ]
 
