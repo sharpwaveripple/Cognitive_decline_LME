@@ -1,0 +1,17 @@
+# latent variable patterns
+i_wmh =~ 1*wmhratio1 + 1*wmhratio2 + 1*wmhratio3
+s_wmh =~ 0*wmhratio1 + 1*wmhratio2 + 2*wmhratio3
+
+i_hv =~ 1*hvratio1 + 1*hvratio2 + 1*hvratio3
+s_hv =~ 0*hvratio1 + 1*hvratio2 + 2*hvratio3
+
+
+# regressions
+dementia3 ~ 0
+dementia3 ~ i_wmh + i_hv
+dementia3 ~ s_wmh + s_hv
+
+
+# covariance
+i_wmh ~~ s_wmh
+i_hv ~~ s_hv
