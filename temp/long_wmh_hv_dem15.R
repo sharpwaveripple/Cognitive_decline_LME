@@ -30,7 +30,7 @@ variables.dem15 <- c("wmhratio06", "hvratio06",
                "wmhratio15", "hvratio15", "dementiai15")
 df.var.dem15 <- df[variables.dem15]
 df.var.dem15.incl <- df.var.dem15[complete.cases(df.var.dem15), ]
-df.var.dem15.incl$dementai15 <- as.factor(df.var.dem15.incl$dementai15)
+df.var.dem15.incl$dementiai15 <- as.ordered(df.var.dem15.incl$dementiai15)
 
 modelfile.dem15 <- paste("temp/long_wmh_hv_dem15.lav", sep="/")
 model.dem15 <- readLines(modelfile.dem15)
