@@ -1,0 +1,5 @@
+# regressions
+mem15 ~ wmhratio15 + hvratio15
+               
+# covariances
+wmhratio15 ~~ hvratio15

@@ -1,0 +1,4 @@
+# regressions
+verbalmemory06_all ~ wmh06 + HV_06_ml_norm
+# covariances
+wmh06 ~~ HV_06_ml_norm
