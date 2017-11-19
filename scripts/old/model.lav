@@ -1,6 +1,0 @@
-# regressions
-cognitiveindex06_all ~ wmh06 + hv06
-
-
-# covariances
-wmh06 ~~ hv06
