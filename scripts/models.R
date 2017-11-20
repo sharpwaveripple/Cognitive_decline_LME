@@ -38,7 +38,7 @@ mod1 <- with(dfTemp, fit1 <<- lmer(cognitiveindex ~ 1 + age06 + time + timesq + 
 mod2 <- with(dfTemp, fit2 <<- lmer(cognitiveindex ~ 1 + age06 + time + timesq + (1 + time|subject) +
                                    lnwmh + lnwmh*timesq + hv + hv*time + lnwmh*hv))
 
-  
+summary(pool(mod1))
 aov(fit1, fit2)
 summary(pool(fit1))
 summary(pool(fit2))
