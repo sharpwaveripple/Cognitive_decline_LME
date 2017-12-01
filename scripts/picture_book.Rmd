@@ -20,16 +20,16 @@ hist(dfLong$lnwmh)
 
 Firstly, let's examine the relationship between age and cognition. This graph is a terse description of the relationship between the two variables: 
 
-# ```{r echo=F, warning=F}
-# library(ggplot2)
-# 
-# ggplot(dfLong, aes(age, cognitiveindex, group=rundmcs)) +
-#   geom_point() + geom_line() +
-#   geom_smooth(aes(group=1), method="lm", colour="red3") +
-#   geom_smooth(aes(group=1), method="lm", formula = y~poly(x, 2), colour="royalblue2") +
-#   scale_x_continuous(limits=c(50, 91), expand=c(0,0)) + 
-#   theme_classic()
-# ```
+```{r echo=F, warning=F}
+library(ggplot2)
+
+ggplot(dfLong, aes(age, cognitiveindex, group=rundmcs)) +
+  geom_point() + geom_line() +
+  geom_smooth(aes(group=1), method="lm", colour="red3") +
+  geom_smooth(aes(group=1), method="lm", formula = y~poly(x, 2), colour="royalblue2") +
+  scale_x_continuous(limits=c(50, 91), expand=c(0,0)) + 
+  theme_classic()
+```
 # 
 # This contains all the information we can use in linear mixed effects regression (lmer). Let's break it down, step by step, so that each term in the model is interpretable.
 # 
