@@ -1,0 +1,83 @@
+---
+title: "Interactions between white matter hyperintensity progression and
+hippocampal atrophy contribute to age-related memory decline"
+output:
+  pdf_document: default
+  #html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = F,
+                      message = F,
+                      warning = F,
+                      results='asis')
+
+library(stargazer)
+library(lme4)
+library(mice)
+library(tidyverse)
+
+df = read.csv("../data/RUNDMC_data_long.csv", sep=";", dec=",")
+#variables <- c("rundmcs", "sex", "age06", "time", "gmv", "wmh", 
+#               "hv", "verbalmemory", "visuospatialmemory", 
+#              "immediatememory", "delayedmemory", "workingmemory")
+#df <- df[variables]
+
+# apply data transformations
+
+df$age06s <- scale(df$age06)
+df$sex <- factor(df$sex)
+df$rundmcs <- factor(df$rundmcs)
+df$timesq <- df$time^2
+df$lnwmh <- log(df$wmh)
+df$gmvnohv <- df$gmv - df$hv
+df <- df[complete.cases(df[, c("lnwmh", "hv")]),]
+```
+
+## STEP 1: Showing the relationship between age and memory decline
+
+Subjects missing data for white matter hyperintensities and hippocampal volumes were dropped (n = ). Next, white matter hyperintensity volume was normalised using a natural log transform. Finally, grey matter volumes are corrected by subtracting hippocampal volumes. 
+
+First, we created a "null" model, which expressed the effect of age and time on a composite memory score. Years of education and sex were also added to the model as static covariates. In this first model, baseline age represents the cross-sectional effects of age on memory, while time between follow-ups and the square of time between follow-ups represent the linear and quadratic effects of temporal progression on memory, respectively (cite). 
+
+
+```{r}
+model1 <- lme4::lmer(memory ~ age06 + time + timesq + sex + educationyears + (1 + time|rundmcs),
+                     data=df, REML=F)
+
+stargazer(model1, header=F,  ci=T, ci.level = .95)
+
+```
+
+
+We then adopted a data-driven approach to determine the role of WMH and HV in contributing to memory deficits. Using the null model as a baseline, three additional nested models were created: one with only the effects of WMH, a second with only the effects of HV, and a third with the simulatenous effects of WMH and HV. 
+
+These three models, along with the null model, were then compared to see which model best explained the data. In order to facilitate comparisons between models with different fixed effects, models were fit by minimising the negative log-likelihood. 
+
+Both models with WMH only and HV only provided significantly better fit in comparison to the null model. The model with HV alone fit better than the model with WMH alone. Importantly, however, the model with both WMH and HV provided the best fit to the data. As such, this model was re-fit using REML to obtain strong effects for standardised estimates. 
+
+```{r}
+model2 <- lme4::lmer(memory ~ age06 + time + sex + timesq*lnwmh  + educationyears + (1 + time|rundmcs), 
+                     data=df, REML=F)
+model3 <- lme4::lmer(memory ~ age06 + sex + time*hv + timesq  + educationyears + (1 + time|rundmcs),
+                     data=df, REML=F)
+model4 <- lme4::lmer(memory ~ age06 + sex + time*hv + timesq*lnwmh + hv*lnwmh  + educationyears + (1 + time|rundmcs),
+                     data=df, REML=F)
+
+stargazer(anova(model1, model2, model3, model4), summary = F)
+
+stargazer(model1, model2, model3, model4, 
+          title = "Fixed effect results",
+          ci=T, ci.level = .95, 
+          omit="Constant",
+          star.cutoffs = c(0.05, 0.01, 0.001),
+          header=F)
+```
+
+We then compared this model with several alternative competing models to determine the specificity of the effect.
+
+First, we wanted to show that the effect of hippocampal atrophy was not part of general grey matter atrophy.
+
+Next, we wanted to show that the effect is specific for memory, rather than general cognition. 
+
+Importantly, indices such as the BIC penalise the addition of further parameters, and are thus more sensitive to overfitting. 
