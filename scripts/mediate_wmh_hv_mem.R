@@ -7,7 +7,10 @@ library(lmerTest)
 setwd("../temp/")
 df = read.csv("../data/RUNDMC_data_long.csv", sep=";", dec=",")
 df$age06mc <- df$age06 - mean(df$age06)
-
+df$agesq <- df$age06mc^2
+df$sex <- factor(df$sex)
+df$rundmcs <- factor(df$rundmcs)
+df$gmvnohv <- (df$gmv - df$hv)/100
 
 ###############################
 # Mediation analyses
@@ -54,3 +57,13 @@ mediate2.out <- mediate(model.m2, model.y2, treat = "log(wmh)", mediator = "hv")
 summary(model.m2)
 summary(model.y2)
 summary(mediate2.out)
+
+
+m1.wmh.hv.mem.adj1 = lmer(memory ~ log(wmh)*time + log(wmh)*timesqrt + hv*time + log(wmh)*hv
+                          + df$age06mc + sex + (1 + time|rundmcs),
+                          data=df, REML=FALSE, na.action=na.exclude)
+
+
+m1.wmh.gmv.mem.adj1 = lmer(memory ~ log(wmh)*time + log(wmh)*timesqrt + df$gmvnohv*time + log(wmh)*df$gmvnohv
+                           + df$age06mc + sex + (1 + time|rundmcs),
+                           data=df, REML=FALSE, na.action=na.exclude)

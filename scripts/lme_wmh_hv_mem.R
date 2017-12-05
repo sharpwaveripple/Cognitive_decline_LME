@@ -8,10 +8,9 @@ setwd("../temp/")
 df = read.csv("../data/RUNDMC_data_long.csv", sep=";", dec=",")
 df$age06mc <- df$age06 - mean(df$age06)
 df$agesq <- df$age06mc^2
-df$tbv06mc <- df$tbv06 - mean(df$tbv06)
 df$sex <- factor(df$sex)
 df$rundmcs <- factor(df$rundmcs)
-df$gmvnohv <- df$gmv - df$hv
+df$gmvnohv <- (df$gmv - df$hv)/100
 
 
 ###############################
@@ -120,17 +119,17 @@ anova(m1.wmh.hv.mem.adj1, m0.wmh.hv.mem.adj1)
 
 ### Interaction WMH*GMV & Adjustments for age, sex ###
 # Random intercept & slope model with interaction wmh*gmv
-m0.wmh.gmv.mem.unadj = lmer(memory ~ log(wmh)*time + log(wmh)*timesqrt + gmv2*time
+m0.wmh.gmv.mem.unadj = lmer(memory ~ log(wmh)*time + log(wmh)*timesqrt + df$gmvnohv*time
                            + (1 + time|rundmcs),
                            data=df, REML=FALSE, na.action=na.exclude)
-m1.wmh.gmv.mem.unadj = lmer(memory ~ log(wmh)*time + log(wmh)*timesqrt + gmv2*time + log(wmh)*gmv2
+m1.wmh.gmv.mem.unadj = lmer(memory ~ log(wmh)*time + log(wmh)*timesqrt + df$gmvnohv*time + log(wmh)*df$gmvnohv
                            + (1 + time|rundmcs),
                            data=df, REML=FALSE, na.action=na.exclude)
 
-m0.wmh.gmv.mem.adj1 = lmer(memory ~ log(wmh)*time + log(wmh)*timesqrt + gmv2*time
+m0.wmh.gmv.mem.adj1 = lmer(memory ~ log(wmh)*time + log(wmh)*timesqrt + df$gmvnohv*time
                           + df$age06mc + sex + (1 + time|rundmcs),
                           data=df, REML=FALSE, na.action=na.exclude)
-m1.wmh.gmv.mem.adj1 = lmer(memory ~ log(wmh)*time + log(wmh)*timesqrt + gmv2*time + log(wmh)*gmv2
+m1.wmh.gmv.mem.adj1 = lmer(memory ~ log(wmh)*time + log(wmh)*timesqrt + df$gmvnohv*time + log(wmh)*df$gmvnohv
                           + df$age06mc + sex + (1 + time|rundmcs),
                           data=df, REML=FALSE, na.action=na.exclude)
 
