@@ -1,20 +1,21 @@
 library(lme4)
 library(ggplot2)
 library(mediation)
-library(lmerTest)
+
 
 
 setwd("../temp/")
 df = read.csv("../data/RUNDMC_data_long.csv", sep=";", dec=",")
+df.wide = read.csv("../data/RUNDMC_data_wide.csv", sep=";", dec=",")
 df$age06mc <- df$age06 - mean(df$age06)
 df$agesq <- df$age06mc^2
 df$sex <- factor(df$sex)
 df$rundmcs <- factor(df$rundmcs)
 df$gmvnohv <- (df$gmv - df$hv)/100
 
-###############################
-# Mediation analyses
-###############################
+
+#### Mediation analyses ####
+
 
 # 1 Fit models for the mediator and outcome variable and store these models.
 # > m <- lm(Mediator ~ Treat + X,data=Data)
@@ -49,9 +50,11 @@ summary(mediate1.out)
 variables.mem <- c("wmh", "hv", "memory")
 df.incl.mem <- df[complete.cases(df[variables.mem]),]
 
-model.m2 <- lmer(hv ~ log(wmh) + time + timesqrt + age06c + sex + (1+time|rundmcs), 
+model.m2 <- lmer(hv ~ log(wmh) + time + timesqrt 
+                 + age06mc + sex + (1+time|rundmcs), 
                  data=df.incl.mem, REML=FALSE, na.action=na.exclude)
-model.y2 <- lmer(memory ~ log(wmh) + hv + time + timesqrt + age06c + sex + (1+time|rundmcs), 
+model.y2 <- lmer(memory ~ log(wmh) + hv + time + timesqrt 
+                 + age06mc + sex + (1+time|rundmcs), 
                  data=df.incl.mem, REML=FALSE, na.action=na.exclude)
 mediate2.out <- mediate(model.m2, model.y2, treat = "log(wmh)", mediator = "hv")
 summary(model.m2)
@@ -59,11 +62,55 @@ summary(model.y2)
 summary(mediate2.out)
 
 
-m1.wmh.hv.mem.adj1 = lmer(memory ~ log(wmh)*time + log(wmh)*timesqrt + hv*time + log(wmh)*hv
-                          + df$age06mc + sex + (1 + time|rundmcs),
-                          data=df, REML=FALSE, na.action=na.exclude)
+# Memory - Time effect
+variables.mem <- c("wmh", "hv", "memory")
+df.incl.mem <- df[complete.cases(df[variables.mem]),]
+
+model.m3 <- lmer(hv ~ log(wmh) + time + timesqrt + log(wmh):time + log(wmh):timesqrt
+                 + age06mc + sex + (1+time|rundmcs), 
+                 data=df.incl.mem, REML=FALSE, na.action=na.exclude)
+model.y3 <- lmer(memory ~ log(wmh) + hv + time + timesqrt + log(wmh):time + log(wmh):timesqrt
+                 + age06mc + sex + (1+time|rundmcs), 
+                 data=df.incl.mem, REML=FALSE, na.action=na.exclude)
+mediate3.out <- mediate(model.m3, model.y3, treat = "log(wmh)", mediator = "hv")
+summary(model.m3)
+summary(model.y3)
+summary(mediate3.out)
 
 
-m1.wmh.gmv.mem.adj1 = lmer(memory ~ log(wmh)*time + log(wmh)*timesqrt + df$gmvnohv*time + log(wmh)*df$gmvnohv
-                           + df$age06mc + sex + (1 + time|rundmcs),
-                           data=df, REML=FALSE, na.action=na.exclude)
+
+
+
+### WMH -> HA -> Memory decline ####
+
+# Define individual hippocampal atrophy slopes (ha)
+model.ha <- lmer(hv ~  time + age06mc + sex + log(wmh) + (1+time|rundmcs), 
+                 data=df, REML=FALSE, na.action=na.exclude)
+summary(model.ha)
+coef(summary(model.ha))[ , "Estimate"]
+ha.slopes <- coef(model.ha)$rundmcs
+ha <- ha.slopes$time
+df.wide$ha <- ha
+
+# Mediation analysis on cross-sectional data
+# Memory - wmh -> ha -> memory
+variables.mem <- c("wmh06", "ha", "memory0615")
+df.wide.incl.mem <- df.wide[complete.cases(df.wide[variables.mem]),]
+
+
+model.m10 <- lm(ha ~ log(wmh06) + Age_2006 + Sex, 
+                 data=df.wide.incl.mem, na.action=na.exclude)
+model.y10 <- lm(memory0615 ~ log(wmh06) + ha + Age_2006 + Sex, 
+                 data=df.wide.incl.mem, na.action=na.exclude)
+mediate10.out <- mediate(model.m10, model.y10, treat = "log(wmh06)", mediator = "ha")
+summary(model.m10)
+summary(model.y10)
+summary(mediate10.out)
+# Klopt niet zo. Geen significant mediation-effect. 
+
+
+
+
+
+
+
