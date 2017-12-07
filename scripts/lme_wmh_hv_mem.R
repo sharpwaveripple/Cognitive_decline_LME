@@ -13,9 +13,8 @@ df$rundmcs <- factor(df$rundmcs)
 df$gmvnohv <- (df$gmv - df$hv)/100
 
 
-###############################
-# Spaghetti plots
-###############################
+### Visualize data - Spaghetti plots ####
+
 
 age.mem.plot <- ggplot(df, aes(x=age, y=memory, group=rundmcs)) +
   geom_line() +
@@ -48,13 +47,11 @@ summary(lm.hv.mem.corr1)
 
 
 
-###############################
-# LME - WMH*HV - Memory
-###############################
+### INTERACTION - LME MEMORY & WMH*HV ####
 
 ### MEMORY ###
 
-### Memory & WMH ###
+### LME - MEMORY & WMH ####
 
 m0.wmh.mem = lmer(memory ~ log(wmh) + time + timesqrt + df$age06mc + sex + (1 + time|rundmcs), 
                       data=df, REML=FALSE, na.action=na.exclude)
@@ -67,7 +64,7 @@ anova(m1.wmh.mem, m0.wmh.mem)
 # However, the slope of WMH is not significantly associated with memory
 
 
-### MEMORY & HV ###
+### LME - MEMORY & HV ####
 
 m0.hv.mem = lmer(memory ~  hv + time + timesqrt + df$age06mc + sex + (1 + time|rundmcs), 
                      data=df, REML=FALSE, na.action=na.exclude)
@@ -80,16 +77,16 @@ anova(m1.hv.mem, m0.hv.mem)
 # The slope of HV is significantly associated with memory
 
 
-### MEMORY & WMH*HV ###
+### LME - MEMORY & WMH*HV ####
 
 ### Interaction WMH*HV & Adjustments for age, sex ###
 # Random intercept & slope model with interaction wmh*hv
-m0.wmh.hv.mem.unadj = lmer(memory ~ log(wmh)*time + log(wmh)*timesqrt + hv*time
-                               + (1 + time|rundmcs),
-                               data=df, REML=FALSE, na.action=na.exclude)
-m1.wmh.hv.mem.unadj = lmer(memory ~ log(wmh)*time + log(wmh)*timesqrt + hv*time + log(wmh)*hv
-                               + (1 + time|rundmcs),
-                               data=df, REML=FALSE, na.action=na.exclude)
+#m0.wmh.hv.mem.unadj = lmer(memory ~ log(wmh)*time + log(wmh)*timesqrt + hv*time
+#                               + (1 + time|rundmcs),
+#                               data=df, REML=FALSE, na.action=na.exclude)
+#m1.wmh.hv.mem.unadj = lmer(memory ~ log(wmh)*time + log(wmh)*timesqrt + hv*time + log(wmh)*hv
+#                               + (1 + time|rundmcs),
+#                               data=df, REML=FALSE, na.action=na.exclude)
 
 m0.wmh.hv.mem.adj1 = lmer(memory ~ log(wmh)*time + log(wmh)*timesqrt + hv*time
                               + df$age06mc + sex + (1 + time|rundmcs),
@@ -98,33 +95,25 @@ m1.wmh.hv.mem.adj1 = lmer(memory ~ log(wmh)*time + log(wmh)*timesqrt + hv*time +
                               + df$age06mc + sex + (1 + time|rundmcs),
                               data=df, REML=FALSE, na.action=na.exclude)
 
-summary(m0.wmh.hv.mem.unadj)
-summary(m1.wmh.hv.mem.unadj)
 summary(m0.wmh.hv.mem.adj1)
 summary(m1.wmh.hv.mem.adj1)
-anova(m1.wmh.hv.mem.unadj, m0.wmh.hv.mem.unadj)
 anova(m1.wmh.hv.mem.adj1, m0.wmh.hv.mem.adj1)
 
 ## The Memory-Model significantly improved when the interaction term of WMH*HV was added to the model 
 
 
 
-##########################################
-# LME - WMH*GMV - Memory
-# Test specificity of hv -> global gmv
-##########################################
-
-
-### MEMORY & WMH*GMV ###
+### LME - MEMORY & WMH*GMV ####
+## Test specificity -> global gmv ##
 
 ### Interaction WMH*GMV & Adjustments for age, sex ###
 # Random intercept & slope model with interaction wmh*gmv
-m0.wmh.gmv.mem.unadj = lmer(memory ~ log(wmh)*time + log(wmh)*timesqrt + df$gmvnohv*time
-                           + (1 + time|rundmcs),
-                           data=df, REML=FALSE, na.action=na.exclude)
-m1.wmh.gmv.mem.unadj = lmer(memory ~ log(wmh)*time + log(wmh)*timesqrt + df$gmvnohv*time + log(wmh)*df$gmvnohv
-                           + (1 + time|rundmcs),
-                           data=df, REML=FALSE, na.action=na.exclude)
+#m0.wmh.gmv.mem.unadj = lmer(memory ~ log(wmh)*time + log(wmh)*timesqrt + df$gmvnohv*time
+#                           + (1 + time|rundmcs),
+#                           data=df, REML=FALSE, na.action=na.exclude)
+#m1.wmh.gmv.mem.unadj = lmer(memory ~ log(wmh)*time + log(wmh)*timesqrt + df$gmvnohv*time + log(wmh)*df$gmvnohv
+#                           + (1 + time|rundmcs),
+#                           data=df, REML=FALSE, na.action=na.exclude)
 
 m0.wmh.gmv.mem.adj1 = lmer(memory ~ log(wmh)*time + log(wmh)*timesqrt + df$gmvnohv*time
                           + df$age06mc + sex + (1 + time|rundmcs),
@@ -133,11 +122,8 @@ m1.wmh.gmv.mem.adj1 = lmer(memory ~ log(wmh)*time + log(wmh)*timesqrt + df$gmvno
                           + df$age06mc + sex + (1 + time|rundmcs),
                           data=df, REML=FALSE, na.action=na.exclude)
 
-summary(m0.wmh.gmv.mem.unadj)
-summary(m1.wmh.gmv.mem.unadj)
 summary(m0.wmh.gmv.mem.adj1)
 summary(m1.wmh.gmv.mem.adj1)
-anova(m1.wmh.gmv.mem.unadj, m0.wmh.gmv.mem.unadj)
 anova(m1.wmh.gmv.mem.adj1, m0.wmh.gmv.mem.adj1)
 
 ## The interaction term of WMH*GMV did not improve the model
