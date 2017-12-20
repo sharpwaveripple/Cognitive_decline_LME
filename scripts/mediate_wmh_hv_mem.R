@@ -32,7 +32,7 @@ df.wide.incl.mem <- df.wide[complete.cases(df.wide[variables.mem]),]
 
 model <- '
 # Regression models
-memory0615 ~ hv06 + b1*ha + Age_2006 + Sex + c1*wmh06 + memory06
+memory0615 ~ hv06 + b1*ha + Age_2006 + Sex + educationyears + c1*wmh06 + memory06
 ha ~ a1*wmh06
 
 # Covariances
