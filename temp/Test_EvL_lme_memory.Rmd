@@ -1,9 +1,8 @@
 ---
-title: "Interactions between white matter hyperintensity progression and
-hippocampal atrophy contribute to age-related memory decline"
+title: "Interactions between white matter hyperintensity progression and"
 output:
+  html_document: default
   pdf_document: default
-  #html_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -16,7 +15,8 @@ library(stargazer)
 library(lme4)
 library(tidyverse)
 
-df = read.csv("../data/RUNDMC_data_long.csv", sep=";", dec=",")
+type <- "html" # "latex" for pdf
+df <- read.csv("../data/RUNDMC_data_long.csv", sep=";", dec=",")
 
 # apply data transformations
 
@@ -44,7 +44,7 @@ model1 <- lme4::lmer(memory ~ age06 + sex + educationyears +
                        time + timesq +
                      (1 + time|rundmcs),
                      data=df, REML=F)
-stargazer(model1, header=F,  ci=T, ci.level = .95)
+stargazer(model1, header=F,  ci=T, ci.level = .95, type=type)
 
 ```
 
@@ -80,20 +80,21 @@ model5 <- lme4::lmer(memory ~ age06 + time*hv + timesq*lnwmh +
                      (1 + time|rundmcs),
                      data=df, REML=F)
 
-stargazer(anova(model1, model2, model3, model5, model4), summary = F)
+stargazer(anova(model1, model2, model3, model5, model4), summary = F, type=type)
 
 stargazer(model1, model2, model3, model5, model4, 
           title = "Fixed effects results",
           ci=T, ci.level = .95, 
           omit="Constant", dep.var.labels = "Memory",
-          order=c(1,2,4,5,8,3,10,9,6,7),
-          covariate.labels = c("Age (years)", "Time to follow-up (linear)", 
-                               "Time to follow-up (quadratic)", "WMH", "WMH progression",
-                               "HV", "Hippocampal atrophy", "WMH * HV interaction", "Sex", "Education (years)"),
+          order=c(1,2,3,7,9,10,4,8,6,5),
+          covariate.labels = c("Age (years)", "Sex", "Education (years)", 
+                               "Time to follow-up (linear)", "Time to follow-up (quadratic)",
+                               "WMH", "WMH progression",
+                               "HV", "Hippocampal atrophy", "WMH * HV interaction"),
           star.cutoffs = c(0.05, 0.01, 0.001),
-          column.labels = c("Null", "WMH only", "HV only", "WMH & HV", "Full"),
+          column.labels = c("Null", "WMH only", "HV only", "WMH and HV", "Full"),
           initial.zero = F,
-          header=F)
+          header=F, type=type)
 ```
 
 We then compared this model with several alternative competing models to determine the specificity of the effect.
@@ -117,5 +118,5 @@ model4b <- lme4::lmer(cognitiveindex_nomem ~ age06 + time*gmvnohv + timesq*lnwmh
                       data=df, REML=F)
 
 
-stargazer(anova(model4, model4a, model4b), summary=F, header=F)
+stargazer(anova(model4, model4a, model4b), summary=F, header=F, type=type)
 ```

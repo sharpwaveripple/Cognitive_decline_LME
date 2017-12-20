@@ -1,9 +1,10 @@
 ---
-title: "Interactions between white matter hyperintensity progression and
-hippocampal atrophy contribute to age-related memory decline"
+title: Interactions between white matter hyperintensity progression and hippocampal
+  atrophy contribute to age-related memory decline
 output:
+  html_document:
+    df_print: paged
   pdf_document: default
-  #html_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -102,7 +103,7 @@ Importantly, indices such as the BIC penalise the addition of further parameters
 
 
 ```{r}
-model4a <- lme4::lmer(memory ~ age06 + time*gmvnohv + timesq*lnwmh +
+model4a <- mixed(memory ~ age06 + time*gmvnohv + timesq*lnwmh +
                       gmvnohv*lnwmh  + sex + educationyears +
                       (1 + time|rundmcs),
                       data=df, REML=F)
@@ -114,4 +115,20 @@ model4b <- lme4::lmer(cognitiveindex_nomem ~ age06 + time*gmvnohv + timesq*lnwmh
 
 
 stargazer(anova(model4, model4a, model4b), summary=F, header=F)
+
+library(afex)
+library(mediation)
+
+modelmed <- lme4::lmer(hv ~ age06 + time + timesq*lnwmh +
+                       sex + educationyears + (1|rundmcs),
+                       data=df, REML=F)
+
+modelout <- lme4::lmer(memory ~ age06 + time + timesq*lnwmh +
+                       lnwmh*hv + sex + educationyears + 
+                       (1 + time|rundmcs), data=df, REML=F)
+
+mediate(modelmed, modelout, treat="memory", mediator="hv")
+                                              
+mixed(model4)
+
 ```
