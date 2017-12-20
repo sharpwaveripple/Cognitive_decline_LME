@@ -47,6 +47,13 @@ scatterPlot(df$logwmh, df$cognitiveindex, df$age,
 scatterPlot(df$hv, df$cognitiveindex, df$age,
             "Hippocampal volumes", "Cognitive index", "Age")
 
+scatterPlot(df$logwmh, df$memory, df$age,
+            "White matter hyperintensities", "Memory", "Age")
+
+scatterPlot(df$hv, df$memory, df$age,
+            "Hippocampal volumes", "Memory", "Age")
+
+
 # here, each line segment represents a subject. 
 ggplot(df, aes(age, cognitiveindex, group=subject)) +
   geom_point() + geom_line() +
