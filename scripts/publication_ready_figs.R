@@ -48,10 +48,10 @@ scatterPlot(df$hv, df$cognitiveindex, df$age,
             "Hippocampal volumes", "Cognitive index", "Age")
 
 scatterPlot(df$logwmh, df$memory, df$age,
-            "White matter hyperintensities", "Memory", "Age")
+            "WMH volume (log ml)", "Memory (z-score)", "Age (years)")
 
 scatterPlot(df$hv, df$memory, df$age,
-            "Hippocampal volumes", "Memory", "Age")
+            "Hippocampal volume (ml)", "Memory (z-score)", "Age (years)")
 
 
 # here, each line segment represents a subject. 

@@ -1,0 +1,541 @@
+---
+title: Memory decline in elderly with cerebral small vessel disease explained by temporal
+  interactions between white matter hyperintensities and hippocampal atrophy
+output:
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = F,
+                      message = F,
+                      warning = F,
+                      results='asis')
+
+library(stargazer)
+library(lme4)
+library(tidyverse)
+
+df = read.csv("../data/RUNDMC_data_long.csv", sep=";", dec=",")
+
+# apply data transformations
+
+df$age06s <- scale(df$age06)
+df$sex <- factor(df$sex)
+df$rundmcs <- factor(df$rundmcs)
+df$timesq <- df$time^2
+df$lnwmh <- log(df$wmh)
+altIndex <- c("psychomotorspeed", "fluency", "responseinhibition", "attention",
+              "executivefunction")
+df$cognitiveindex_nomem <- rowMeans(df[altIndex], na.rm=T)
+df$gmvnohv <- df$gmv - df$hv
+df <- df[complete.cases(df[, c("lnwmh", "hv")]),]
+
+```
+
+## 1. Showing the relationship between age and memory decline
+
+First, we created a "null" model, which expressed the effect of age and time on a composite memory score. Years of education and sex were also added to the model as static covariates. In this first model, baseline age represents the cross-sectional effects of age on memory, while time between follow-ups and the square of time between follow-ups represent the linear and quadratic effects of temporal progression on memory, respectively. 
+
+
+```{r}
+model1 <- lme4::lmer(memory ~ 
+                       age06 + 
+                       time + 
+                       timesq +
+                       sex + 
+                       educationyears +
+                     (1 + time|rundmcs),
+                     data=df, REML=F)
+stargazer(model1, header=F,  
+          ci=T, ci.level = .95,
+          omit="Constant",
+          order=c(1,4,5,2,3),
+          covariate.labels = c("Baseline age (years)", 
+                               "Sex",
+                               "Education (years)",
+                               "Time to follow-up (linear)", 
+                               "Time to follow-up (quadratic)"))
+
+```
+
+
+## 2. Examining the interaction between WMH and HV in explaining memory decline
+
+We then adopted a data-driven approach to determine the role of WMH and HV in contributing to memory deficits. Using the null model as a baseline, three successive models were created: one with only the effects of WMH, a second with only the effects of HV, and a third with the simulatenous effects of WMH and HV. 
+
+These three models, along with the null model, were then compared to see which model best explained the data. Since the random effect is identical across all models, the fixed effects are compared. Also all other models can be seen as restricted cases of the final model. 
+
+In order to facilitate comparisons between models with different fixed effects, models were fit by minimising the negative log-likelihood. All models were then compared using a one-way ANOVA.
+
+
+```{r}
+
+model2 <- lme4::lmer(memory ~ age06 + time + timesq*lnwmh +
+                     sex + educationyears +
+                     (1 + time|rundmcs), 
+                     data=df, REML=F)
+
+model3 <- lme4::lmer(memory ~ age06 + sex + time*hv + timesq  +
+                     sex + educationyears +
+                     (1 + time|rundmcs),
+                     data=df, REML=F)
+
+model4 <- lme4::lmer(memory ~ age06 + time*hv + timesq*lnwmh +
+                     hv*lnwmh  + sex + educationyears +
+                     (1 + time|rundmcs),
+                     data=df, REML=F)
+
+model5 <- lme4::lmer(memory ~ age06 + time*hv + timesq*lnwmh +
+                     sex + educationyears +
+                     (1 + time|rundmcs),
+                     data=df, REML=F)
+
+stargazer(anova(model1, model2, model3, model4), summary = F)
+
+stargazer(anova(model5, model4), summary = F)
+
+stargazer(model1, model2, model3, model4, 
+          title = "Fixed effects results",
+          ci=T, ci.level = .95, 
+          omit="Constant", dep.var.labels = "Memory",
+          order=c(1,6,7,2,4,5,8,3,10,9),
+          covariate.labels = c("Baseline age (years)", 
+                               "Sex",
+                               "Education (years)",
+                               "Time to follow-up (linear)", 
+                               "Time to follow-up (quadratic)", 
+                               "WMH", 
+                               "WMH progression",
+                               "HV", 
+                               "Hippocampal atrophy", 
+                               "WMH * HV interaction"),
+          star.cutoffs = c(0.05, 0.01, 0.001),
+          column.labels = c("Null", "WMH only", "HV only", "Full"),
+          initial.zero = F,
+          header=F)
+```
+
+Both models with WMH only and HV only provided significantly better fit in comparison to the null model. The model with HV alone fit better than the model with WMH alone. Importantly, however, the model with both WMH and HV provided the best fit to the data. As such, this model was re-fit using REML to obtain strong effects for standardised estimates.
+
+## 3. Memory examined separately as long-term memory (i.e. immediate and delayed memory) and working memory
+
+Working memory and long-term memory were examined separately, as we have indications that they are affected differently by WMH and HV [^1].
+
+### 3a. Working memory
+
+Working memory and long-term memory were examined separately.
+
+```{r}
+wm.model1 <- lme4::lmer(workingmemory ~ 
+                       age06 + 
+                       time + 
+                       timesq +
+                       sex + 
+                       educationyears +
+                     (1 + time|rundmcs),
+                     data=df, REML=F)
+
+wm.model2 <- lme4::lmer(workingmemory ~ age06 + time + timesq*lnwmh +
+                     sex + educationyears +
+                     (1 + time|rundmcs), 
+                     data=df, REML=F)
+
+wm.model3 <- lme4::lmer(workingmemory ~ age06 + sex + time*hv + timesq  +
+                     sex + educationyears +
+                     (1 + time|rundmcs),
+                     data=df, REML=F)
+
+wm.model4 <- lme4::lmer(workingmemory ~ age06 + time*hv + timesq*lnwmh +
+                     hv*lnwmh  + sex + educationyears +
+                     (1 + time|rundmcs),
+                     data=df, REML=F)
+
+wm.model5 <- lme4::lmer(workingmemory ~ age06 + time*hv + timesq*lnwmh +
+                     sex + educationyears +
+                     (1 + time|rundmcs),
+                     data=df, REML=F)
+
+stargazer(anova(wm.model5, wm.model4), summary = F)
+
+stargazer(wm.model1, wm.model2, wm.model3, wm.model4, 
+          title = "Fixed effects results",
+          ci=T, ci.level = .95, 
+          omit="Constant", dep.var.labels = "Working Memory",
+          order=c(1,6,7,2,4,5,8,3,10,9),
+          covariate.labels = c("Baseline age (years)", 
+                               "Sex",
+                               "Education (years)",
+                               "Time to follow-up (linear)", 
+                               "Time to follow-up (quadratic)", 
+                               "WMH", 
+                               "WMH progression",
+                               "HV", 
+                               "Hippocampal atrophy", 
+                               "WMH * HV interaction"),
+          star.cutoffs = c(0.05, 0.01, 0.001),
+          column.labels = c("Null", "WMH only", "HV only", "Full"),
+          initial.zero = F,
+          header=F)
+
+```
+
+### 3b. Immediate memory
+
+Working memory and long-term memory were examined separately.
+
+```{r}
+im.model1 <- lme4::lmer(immediatememory ~ 
+                       age06 + 
+                       time + 
+                       timesq +
+                       sex + 
+                       educationyears +
+                     (1 + time|rundmcs),
+                     data=df, REML=F)
+
+im.model2 <- lme4::lmer(immediatememory ~ age06 + time + timesq*lnwmh +
+                     sex + educationyears +
+                     (1 + time|rundmcs), 
+                     data=df, REML=F)
+
+im.model3 <- lme4::lmer(immediatememory ~ age06 + sex + time*hv + timesq  +
+                     sex + educationyears +
+                     (1 + time|rundmcs),
+                     data=df, REML=F)
+
+im.model4 <- lme4::lmer(immediatememory ~ age06 + time*hv + timesq*lnwmh +
+                     hv*lnwmh  + sex + educationyears +
+                     (1 + time|rundmcs),
+                     data=df, REML=F)
+
+im.model5 <- lme4::lmer(immediatememory ~ age06 + time*hv + timesq*lnwmh +
+                     sex + educationyears +
+                     (1 + time|rundmcs),
+                     data=df, REML=F)
+
+stargazer(anova(im.model5, im.model4), summary = F)
+
+stargazer(im.model1, im.model2, im.model3, im.model4, 
+          title = "Fixed effects results",
+          ci=T, ci.level = .95, 
+          omit="Constant", dep.var.labels = "Immediate Memory",
+          order=c(1,6,7,2,4,5,8,3,10,9),
+          covariate.labels = c("Baseline age (years)", 
+                               "Sex",
+                               "Education (years)",
+                               "Time to follow-up (linear)", 
+                               "Time to follow-up (quadratic)", 
+                               "WMH", 
+                               "WMH progression",
+                               "HV", 
+                               "Hippocampal atrophy", 
+                               "WMH * HV interaction"),
+          star.cutoffs = c(0.05, 0.01, 0.001),
+          column.labels = c("Null", "WMH only", "HV only", "Full"),
+          initial.zero = F,
+          header=F)
+
+```
+
+
+### 3c. Delayed memory
+
+Working memory and long-term memory were examined separately.
+
+```{r}
+dm.model1 <- lme4::lmer(delayedmemory ~ 
+                       age06 + 
+                       time + 
+                       timesq +
+                       sex + 
+                       educationyears +
+                     (1 + time|rundmcs),
+                     data=df, REML=F)
+
+dm.model2 <- lme4::lmer(delayedmemory ~ age06 + time + timesq*lnwmh +
+                     sex + educationyears +
+                     (1 + time|rundmcs), 
+                     data=df, REML=F)
+
+dm.model3 <- lme4::lmer(delayedmemory ~ age06 + sex + time*hv + timesq  +
+                     sex + educationyears +
+                     (1 + time|rundmcs),
+                     data=df, REML=F)
+
+dm.model4 <- lme4::lmer(delayedmemory ~ age06 + time*hv + timesq*lnwmh +
+                     hv*lnwmh  + sex + educationyears +
+                     (1 + time|rundmcs),
+                     data=df, REML=F)
+
+dm.model5 <- lme4::lmer(delayedmemory ~ age06 + time*hv + timesq*lnwmh +
+                     sex + educationyears +
+                     (1 + time|rundmcs),
+                     data=df, REML=F)
+
+stargazer(anova(dm.model5, dm.model4), summary = F)
+
+stargazer(dm.model1, dm.model2, dm.model3, dm.model4, 
+          title = "Fixed effects results",
+          ci=T, ci.level = .95, 
+          omit="Constant", dep.var.labels = "Delayed Memory",
+          order=c(1,6,7,2,4,5,8,3,10,9),
+          covariate.labels = c("Baseline age (years)", 
+                               "Sex",
+                               "Education (years)",
+                               "Time to follow-up (linear)", 
+                               "Time to follow-up (quadratic)", 
+                               "WMH", 
+                               "WMH progression",
+                               "HV", 
+                               "Hippocampal atrophy", 
+                               "WMH * HV interaction"),
+          star.cutoffs = c(0.05, 0.01, 0.001),
+          column.labels = c("Null", "WMH only", "HV only", "Full"),
+          initial.zero = F,
+          header=F)
+
+```
+
+
+
+
+## 4. Determine the specificity of the effect
+
+We then compared this model with several alternative competing models to determine the specificity of the effect.
+
+
+### 4.1 Grey matter atrophy
+
+First, we wanted to show that the effect of hippocampal atrophy was not part of general grey matter atrophy.
+
+
+```{r}
+
+gm.model3 <- lme4::lmer(memory ~ age06 + sex + time*gmvnohv + timesq  +
+                     sex + educationyears +
+                     (1 + time|rundmcs),
+                     data=df, REML=F)
+
+gm.model4 <- lme4::lmer(memory ~ age06 + time*gmvnohv + timesq*lnwmh +
+                     gmvnohv*lnwmh  + sex + educationyears +
+                     (1 + time|rundmcs),
+                     data=df, REML=F)
+
+gm.model5 <- lme4::lmer(memory ~ age06 + time*gmvnohv + timesq*lnwmh +
+                     sex + educationyears +
+                     (1 + time|rundmcs),
+                     data=df, REML=F)
+
+gm.m5 <- lme4::lmer(memory ~ age06 + time*gmvnohv + timesq*lnwmh +
+                     sex + (1 + time|rundmcs),
+                     data=df, REML=F)
+
+gm.m4 <- lme4::lmer(memory ~ age06 + time*gmvnohv + timesq*lnwmh +
+                     gmvnohv*lnwmh  + sex + (1 + time|rundmcs),
+                     data=df, REML=F)
+
+stargazer(anova(model4, gm.model4), summary = F)
+stargazer(anova(gm.model5, gm.model4), summary = F)
+stargazer(anova(gm.m5, gm.m4), summary = F)
+
+stargazer(model1, model2, gm.model3, gm.model4, 
+          title = "Fixed effects results",
+          ci=T, ci.level = .95, 
+          omit="Constant", dep.var.labels = "Memory",
+          order=c(1,6,7,2,4,5,8,3,10,9),
+          covariate.labels = c("Baseline age (years)", 
+                               "Sex",
+                               "Education (years)",
+                               "Time to follow-up (linear)", 
+                               "Time to follow-up (quadratic)", 
+                               "WMH", 
+                               "WMH progression",
+                               "GMV", 
+                               "GM atrophy", 
+                               "WMH * GMV interaction"),
+          star.cutoffs = c(0.05, 0.01, 0.001),
+          column.labels = c("Null", "WMH only", "GMV only", "Full"),
+          initial.zero = F,
+          header=F)
+```
+
+
+### 4.2 Global cognition
+
+Next, we wanted to show that the effect is specific for memory, rather than general cognition.
+
+```{r}
+ci.model1 <- lme4::lmer(cognitiveindex ~ 
+                       age06 + 
+                       time + 
+                       timesq +
+                       sex + 
+                       educationyears +
+                     (1 + time|rundmcs),
+                     data=df, REML=F)
+
+ci.model2 <- lme4::lmer(cognitiveindex ~ age06 + time + timesq*lnwmh +
+                     sex + educationyears +
+                     (1 + time|rundmcs), 
+                     data=df, REML=F)
+
+ci.model3 <- lme4::lmer(cognitiveindex ~ age06 + sex + time*hv + timesq  +
+                     sex + educationyears +
+                     (1 + time|rundmcs),
+                     data=df, REML=F)
+
+ci.model4 <- lme4::lmer(cognitiveindex ~ age06 + time*hv + timesq*lnwmh +
+                     hv*lnwmh  + sex + educationyears +
+                     (1 + time|rundmcs),
+                     data=df, REML=F)
+
+ci.model5 <- lme4::lmer(cognitiveindex ~ age06 + time*hv + timesq*lnwmh +
+                     sex + educationyears +
+                     (1 + time|rundmcs),
+                     data=df, REML=F)
+
+stargazer(anova(ci.model5, ci.model4), summary = F)
+
+stargazer(ci.model1, ci.model2, ci.model3, ci.model4, 
+          title = "Fixed effects results",
+          ci=T, ci.level = .95, 
+          omit="Constant", dep.var.labels = "Cognitive Index",
+          order=c(1,6,7,2,4,5,8,3,10,9),
+          covariate.labels = c("Baseline age (years)", 
+                               "Sex",
+                               "Education (years)",
+                               "Time to follow-up (linear)", 
+                               "Time to follow-up (quadratic)", 
+                               "WMH", 
+                               "WMH progression",
+                               "HV", 
+                               "Hippocampal atrophy", 
+                               "WMH * HV interaction"),
+          star.cutoffs = c(0.05, 0.01, 0.001),
+          column.labels = c("Null", "WMH only", "HV only", "Full"),
+          initial.zero = F,
+          header=F)
+
+```
+
+
+### 4.3 Psychomotor speed
+
+Next, we wanted to show that the effect is specific for memory, rather than psychomotor speed.
+
+```{r}
+ps.model1 <- lme4::lmer(psychomotorspeed ~ 
+                       age06 + 
+                       time + 
+                       timesq +
+                       sex + 
+                       educationyears +
+                     (1 + time|rundmcs),
+                     data=df, REML=F)
+
+ps.model2 <- lme4::lmer(psychomotorspeed ~ age06 + time + timesq*lnwmh +
+                     sex + educationyears +
+                     (1 + time|rundmcs), 
+                     data=df, REML=F)
+
+ps.model3 <- lme4::lmer(psychomotorspeed ~ age06 + sex + time*hv + timesq  +
+                     sex + educationyears +
+                     (1 + time|rundmcs),
+                     data=df, REML=F)
+
+ps.model4 <- lme4::lmer(psychomotorspeed ~ age06 + time*hv + timesq*lnwmh +
+                     hv*lnwmh  + sex + educationyears +
+                     (1 + time|rundmcs),
+                     data=df, REML=F)
+
+ps.model5 <- lme4::lmer(psychomotorspeed ~ age06 + time*hv + timesq*lnwmh +
+                     sex + educationyears +
+                     (1 + time|rundmcs),
+                     data=df, REML=F)
+
+stargazer(anova(ps.model5, ps.model4), summary = F)
+
+stargazer(ps.model1, ps.model2, ps.model3, ps.model4, 
+          title = "Fixed effects results",
+          ci=T, ci.level = .95, 
+          omit="Constant", dep.var.labels = "Psychomotor Speed",
+          order=c(1,6,7,2,4,5,8,3,10,9),
+          covariate.labels = c("Baseline age (years)", 
+                               "Sex",
+                               "Education (years)",
+                               "Time to follow-up (linear)", 
+                               "Time to follow-up (quadratic)", 
+                               "WMH", 
+                               "WMH progression",
+                               "HV", 
+                               "Hippocampal atrophy", 
+                               "WMH * HV interaction"),
+          star.cutoffs = c(0.05, 0.01, 0.001),
+          column.labels = c("Null", "WMH only", "HV only", "Full"),
+          initial.zero = F,
+          header=F)
+
+```
+
+
+### 4.4 Executive function
+
+Next, we wanted to show that the effect is specific for memory, rather than executive function.
+
+```{r}
+ef.model1 <- lme4::lmer(executivefunction ~ 
+                       age06 + 
+                       time + 
+                       timesq +
+                       sex + 
+                       educationyears +
+                     (1 + time|rundmcs),
+                     data=df, REML=F)
+
+ef.model2 <- lme4::lmer(executivefunction ~ age06 + time + timesq*lnwmh +
+                     sex + educationyears +
+                     (1 + time|rundmcs), 
+                     data=df, REML=F)
+
+ef.model3 <- lme4::lmer(executivefunction ~ age06 + sex + time*hv + timesq  +
+                     sex + educationyears +
+                     (1 + time|rundmcs),
+                     data=df, REML=F)
+
+ef.model4 <- lme4::lmer(executivefunction ~ age06 + time*hv + timesq*lnwmh +
+                     hv*lnwmh  + sex + educationyears +
+                     (1 + time|rundmcs),
+                     data=df, REML=F)
+
+ef.model5 <- lme4::lmer(executivefunction ~ age06 + time*hv + timesq*lnwmh +
+                     sex + educationyears +
+                     (1 + time|rundmcs),
+                     data=df, REML=F)
+
+stargazer(anova(ef.model5, ef.model4), summary = F)
+
+stargazer(ef.model1, ef.model2, ef.model3, ef.model4, 
+          title = "Fixed effects results",
+          ci=T, ci.level = .95, 
+          omit="Constant", dep.var.labels = "Executive function",
+          order=c(1,6,7,2,4,5,8,3,10,9),
+          covariate.labels = c("Baseline age (years)", 
+                               "Sex",
+                               "Education (years)",
+                               "Time to follow-up (linear)", 
+                               "Time to follow-up (quadratic)", 
+                               "WMH", 
+                               "WMH progression",
+                               "HV", 
+                               "Hippocampal atrophy", 
+                               "WMH * HV interaction"),
+          star.cutoffs = c(0.05, 0.01, 0.001),
+          column.labels = c("Null", "WMH only", "HV only", "Full"),
+          initial.zero = F,
+          header=F)
+
+```
+
+
+
+[^1]: Charlton RA, Barrick TR, Markus HS, Morris RG. The relationship between episodic long-term memory and white matter integrity in normal aging. Neuropsychologia 2010; 48: 114-22.
