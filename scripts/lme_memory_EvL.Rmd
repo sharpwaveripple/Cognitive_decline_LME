@@ -2,6 +2,8 @@
 title: Memory decline in elderly with cerebral small vessel disease explained by temporal
   interactions between white matter hyperintensities and hippocampal atrophy
 output:
+  html_document:
+    df_print: paged
   pdf_document: default
 ---
 
@@ -27,7 +29,7 @@ df$lnwmh <- log(df$wmh)
 altIndex <- c("psychomotorspeed", "fluency", "responseinhibition", "attention",
               "executivefunction")
 df$cognitiveindex_nomem <- rowMeans(df[altIndex], na.rm=T)
-df$gmvnohv <- df$gmv - df$hv
+df$gmvnohv <- (df$gmv - df$hv)
 df <- df[complete.cases(df[, c("lnwmh", "hv")]),]
 
 ```
@@ -46,7 +48,7 @@ model1 <- lme4::lmer(memory ~
                        educationyears +
                      (1 + time|rundmcs),
                      data=df, REML=F)
-stargazer(model1, header=F,  
+stargazer(model1, header=F, type="html",  
           ci=T, ci.level = .95,
           omit="Constant",
           order=c(1,4,5,2,3),
@@ -90,10 +92,6 @@ model5 <- lme4::lmer(memory ~ age06 + time*hv + timesq*lnwmh +
                      (1 + time|rundmcs),
                      data=df, REML=F)
 
-stargazer(anova(model1, model2, model3, model4), summary = F)
-
-stargazer(anova(model5, model4), summary = F)
-
 stargazer(model1, model2, model3, model4, 
           title = "Fixed effects results",
           ci=T, ci.level = .95, 
@@ -112,10 +110,15 @@ stargazer(model1, model2, model3, model4,
           star.cutoffs = c(0.05, 0.01, 0.001),
           column.labels = c("Null", "WMH only", "HV only", "Full"),
           initial.zero = F,
-          header=F)
+          header=F, type="html")
+
+stargazer(anova(model1, model2, model3, model4), summary = F, type="html")
+
+stargazer(anova(model5, model4), summary = F, type="html")
+
 ```
 
-Both models with WMH only and HV only provided significantly better fit in comparison to the null model. The model with HV alone fit better than the model with WMH alone. Importantly, however, the model with both WMH and HV provided the best fit to the data. As such, this model was re-fit using REML to obtain strong effects for standardised estimates.
+Both models with WMH only and HV only provided significantly better fit in comparison to the null model. The model with HV alone fit better than the model with WMH alone. Importantly, however, the model with both WMH and HV provided the best fit to the data. 
 
 ## 3. Memory examined separately as long-term memory (i.e. immediate and delayed memory) and working memory
 
@@ -123,7 +126,7 @@ Working memory and long-term memory were examined separately, as we have indicat
 
 ### 3a. Working memory
 
-Working memory and long-term memory were examined separately.
+Here we examined Working Memory separately.
 
 ```{r}
 wm.model1 <- lme4::lmer(workingmemory ~ 
@@ -155,8 +158,6 @@ wm.model5 <- lme4::lmer(workingmemory ~ age06 + time*hv + timesq*lnwmh +
                      (1 + time|rundmcs),
                      data=df, REML=F)
 
-stargazer(anova(wm.model5, wm.model4), summary = F)
-
 stargazer(wm.model1, wm.model2, wm.model3, wm.model4, 
           title = "Fixed effects results",
           ci=T, ci.level = .95, 
@@ -175,13 +176,15 @@ stargazer(wm.model1, wm.model2, wm.model3, wm.model4,
           star.cutoffs = c(0.05, 0.01, 0.001),
           column.labels = c("Null", "WMH only", "HV only", "Full"),
           initial.zero = F,
-          header=F)
+          header=F, type="html")
+
+stargazer(anova(wm.model5, wm.model4), summary = F, type="html")
 
 ```
 
 ### 3b. Immediate memory
 
-Working memory and long-term memory were examined separately.
+Here we examined Immediate Memory separately.
 
 ```{r}
 im.model1 <- lme4::lmer(immediatememory ~ 
@@ -213,8 +216,6 @@ im.model5 <- lme4::lmer(immediatememory ~ age06 + time*hv + timesq*lnwmh +
                      (1 + time|rundmcs),
                      data=df, REML=F)
 
-stargazer(anova(im.model5, im.model4), summary = F)
-
 stargazer(im.model1, im.model2, im.model3, im.model4, 
           title = "Fixed effects results",
           ci=T, ci.level = .95, 
@@ -233,14 +234,16 @@ stargazer(im.model1, im.model2, im.model3, im.model4,
           star.cutoffs = c(0.05, 0.01, 0.001),
           column.labels = c("Null", "WMH only", "HV only", "Full"),
           initial.zero = F,
-          header=F)
+          header=F, type="html")
+
+stargazer(anova(im.model5, im.model4), summary = F, type="html")
 
 ```
 
 
 ### 3c. Delayed memory
 
-Working memory and long-term memory were examined separately.
+Here we examined Delayed Memory separately.
 
 ```{r}
 dm.model1 <- lme4::lmer(delayedmemory ~ 
@@ -272,8 +275,6 @@ dm.model5 <- lme4::lmer(delayedmemory ~ age06 + time*hv + timesq*lnwmh +
                      (1 + time|rundmcs),
                      data=df, REML=F)
 
-stargazer(anova(dm.model5, dm.model4), summary = F)
-
 stargazer(dm.model1, dm.model2, dm.model3, dm.model4, 
           title = "Fixed effects results",
           ci=T, ci.level = .95, 
@@ -292,21 +293,24 @@ stargazer(dm.model1, dm.model2, dm.model3, dm.model4,
           star.cutoffs = c(0.05, 0.01, 0.001),
           column.labels = c("Null", "WMH only", "HV only", "Full"),
           initial.zero = F,
-          header=F)
+          header=F, type="html")
+
+stargazer(anova(dm.model5, dm.model4), summary = F, type="html")
 
 ```
 
+In all 3 memory domains, the full model with the WMH-HV interaction term showed significantly better model fit as well as a significant WMH-HV interaction term. 
+The only difference was that in the model of Working Memory, the main effects of HV and hippocampal atrophy were not significant anymore.
 
 
-
-## 4. Determine the specificity of the effect
+## 4. Determine the specificity of the effect - Global brain atrophy
 
 We then compared this model with several alternative competing models to determine the specificity of the effect.
 
 
 ### 4.1 Grey matter atrophy
 
-First, we wanted to show that the effect of hippocampal atrophy was not part of general grey matter atrophy.
+We wanted to show that the effect of hippocampal atrophy was not part of general grey matter atrophy.
 
 
 ```{r}
@@ -334,10 +338,6 @@ gm.m4 <- lme4::lmer(memory ~ age06 + time*gmvnohv + timesq*lnwmh +
                      gmvnohv*lnwmh  + sex + (1 + time|rundmcs),
                      data=df, REML=F)
 
-stargazer(anova(model4, gm.model4), summary = F)
-stargazer(anova(gm.model5, gm.model4), summary = F)
-stargazer(anova(gm.m5, gm.m4), summary = F)
-
 stargazer(model1, model2, gm.model3, gm.model4, 
           title = "Fixed effects results",
           ci=T, ci.level = .95, 
@@ -356,13 +356,85 @@ stargazer(model1, model2, gm.model3, gm.model4,
           star.cutoffs = c(0.05, 0.01, 0.001),
           column.labels = c("Null", "WMH only", "GMV only", "Full"),
           initial.zero = F,
-          header=F)
+          header=F, type="html")
+
+stargazer(anova(model4, gm.model4), summary = F, type="html")
+stargazer(anova(gm.model5, gm.model4), summary = F, type="html")
+stargazer(anova(gm.m5, gm.m4), summary = F, type="html")
+
 ```
 
+The effect was not specific to hippocampal atrophy, as the interaction term of WMH with GMV was also significantly associated with memory performance.
 
-### 4.2 Global cognition
 
-Next, we wanted to show that the effect is specific for memory, rather than general cognition.
+### 4.2 Combined model with both HV & GMV interactions
+
+We next built a combined model with both WMH-HV and WMH-GMV interactions included, to examine the relative strengths of the WMH-HV and WMH-GMV interactions.
+
+
+```{r}
+
+spec.m.wmh <- lme4::lmer(memory ~ age06 + sex + educationyears +
+                          time + timesq + lnwmh + lnwmh:timesq + 
+                     (1 + time|rundmcs),
+                     data=df, REML=F)
+
+spec.m.hv <- lme4::lmer(memory ~ age06 + sex + educationyears +
+                          time + timesq + lnwmh + hv +
+                          lnwmh:timesq + hv:time + hv:lnwmh  + 
+                     (1 + time|rundmcs),
+                     data=df, REML=F)
+
+spec.m.gmv <- lme4::lmer(memory ~ age06 + sex + educationyears +
+                           time + timesq + lnwmh + gmvnohv +
+                           lnwmh:timesq + gmvnohv:time + gmvnohv:lnwmh +
+                     (1 + time|rundmcs),
+                     data=df, REML=F)
+
+spec.m.both <- lme4::lmer(memory ~ age06 + sex + educationyears +
+                          time + timesq + lnwmh + hv + gmvnohv +
+                           lnwmh:timesq + hv:time + gmvnohv:time +
+                            hv:lnwmh  + gmvnohv:lnwmh +
+                     (1 + time|rundmcs),
+                     data=df, REML=F)
+
+stargazer(spec.m.wmh, spec.m.hv, spec.m.gmv, spec.m.both, 
+          title = "Fixed effects results",
+          ci=T, ci.level = .95, 
+          omit="Constant", dep.var.labels = "Memory",
+          order=c(1,2,3,4,5,6,9,7,10,11,8,12,13),
+          covariate.labels = c("Baseline age (years)", 
+                               "Sex",
+                               "Education (years)",
+                               "Time to follow-up (linear)", 
+                               "Time to follow-up (quadratic)", 
+                               "WMH", 
+                               "WMH progression",
+                               "HV", 
+                               "Hippocampal atrophy", 
+                               "WMH * HV interaction",
+                               "GMV",
+                               "GM atrophy",
+                               "WMH * GM interaction"),
+          star.cutoffs = c(0.05, 0.01, 0.001),
+          column.labels = c("WMH only", "WMH * HV", "WMH * GMV", "Both"),
+          initial.zero = F,
+          header=F, type="html")
+
+stargazer(anova(spec.m.wmh, spec.m.hv, spec.m.gmv, spec.m.both), summary = F, type="html")
+
+```
+
+The effect was not specific to hippocampal atrophy, as the interaction term of WMH with GMV was also significantly associated with memory performance. However, when GMV and HV were both included in the model, only the WMH-HV interaction remained significant. 
+
+
+## 5. Determine the specificity of the effect - Other cognitive domains
+
+We then compared this model with several alternative competing models to determine the specificity of the effect.
+
+### 5.1 Global cognition
+
+We wanted to test whether the effect is specific for memory, rather than general cognition.
 
 ```{r}
 ci.model1 <- lme4::lmer(cognitiveindex ~ 
@@ -394,8 +466,6 @@ ci.model5 <- lme4::lmer(cognitiveindex ~ age06 + time*hv + timesq*lnwmh +
                      (1 + time|rundmcs),
                      data=df, REML=F)
 
-stargazer(anova(ci.model5, ci.model4), summary = F)
-
 stargazer(ci.model1, ci.model2, ci.model3, ci.model4, 
           title = "Fixed effects results",
           ci=T, ci.level = .95, 
@@ -414,14 +484,17 @@ stargazer(ci.model1, ci.model2, ci.model3, ci.model4,
           star.cutoffs = c(0.05, 0.01, 0.001),
           column.labels = c("Null", "WMH only", "HV only", "Full"),
           initial.zero = F,
-          header=F)
+          header=F, type="html")
+
+stargazer(anova(ci.model5, ci.model4), summary = F, type="html")
+
 
 ```
 
 
-### 4.3 Psychomotor speed
+### 5.2 Psychomotor speed
 
-Next, we wanted to show that the effect is specific for memory, rather than psychomotor speed.
+Next, we wanted to test whether the effect is specific for memory, rather than psychomotor speed.
 
 ```{r}
 ps.model1 <- lme4::lmer(psychomotorspeed ~ 
@@ -453,8 +526,6 @@ ps.model5 <- lme4::lmer(psychomotorspeed ~ age06 + time*hv + timesq*lnwmh +
                      (1 + time|rundmcs),
                      data=df, REML=F)
 
-stargazer(anova(ps.model5, ps.model4), summary = F)
-
 stargazer(ps.model1, ps.model2, ps.model3, ps.model4, 
           title = "Fixed effects results",
           ci=T, ci.level = .95, 
@@ -473,14 +544,16 @@ stargazer(ps.model1, ps.model2, ps.model3, ps.model4,
           star.cutoffs = c(0.05, 0.01, 0.001),
           column.labels = c("Null", "WMH only", "HV only", "Full"),
           initial.zero = F,
-          header=F)
+          header=F, type="html")
+
+stargazer(anova(ps.model5, ps.model4), summary = F, type="html")
 
 ```
 
 
-### 4.4 Executive function
+### 5.3 Executive function
 
-Next, we wanted to show that the effect is specific for memory, rather than executive function.
+Next, we wanted to test whether the effect is specific for memory, rather than executive function.
 
 ```{r}
 ef.model1 <- lme4::lmer(executivefunction ~ 
@@ -512,8 +585,6 @@ ef.model5 <- lme4::lmer(executivefunction ~ age06 + time*hv + timesq*lnwmh +
                      (1 + time|rundmcs),
                      data=df, REML=F)
 
-stargazer(anova(ef.model5, ef.model4), summary = F)
-
 stargazer(ef.model1, ef.model2, ef.model3, ef.model4, 
           title = "Fixed effects results",
           ci=T, ci.level = .95, 
@@ -532,10 +603,13 @@ stargazer(ef.model1, ef.model2, ef.model3, ef.model4,
           star.cutoffs = c(0.05, 0.01, 0.001),
           column.labels = c("Null", "WMH only", "HV only", "Full"),
           initial.zero = F,
-          header=F)
+          header=F, type="html")
+
+stargazer(anova(ef.model5, ef.model4), summary = F, type="html")
 
 ```
 
+The combined effects of WMH and hippocampal atrophy are not specific to memory performance; they also explain global cognitive functioning as well as psychomotor speed and executive function.
 
 
 [^1]: Charlton RA, Barrick TR, Markus HS, Morris RG. The relationship between episodic long-term memory and white matter integrity in normal aging. Neuropsychologia 2010; 48: 114-22.

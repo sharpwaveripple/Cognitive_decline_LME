@@ -127,79 +127,6849 @@ $(document).ready(function () {
 <div id="showing-the-relationship-between-age-and-memory-decline" class="section level2">
 <h2>1. Showing the relationship between age and memory decline</h2>
 <p>First, we created a “null” model, which expressed the effect of age and time on a composite memory score. Years of education and sex were also added to the model as static covariates. In this first model, baseline age represents the cross-sectional effects of age on memory, while time between follow-ups and the square of time between follow-ups represent the linear and quadratic effects of temporal progression on memory, respectively.</p>
-
+<table style="text-align:center">
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+<em>Dependent variable:</em>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td colspan="1" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+memory
+</td>
+</tr>
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Baseline age (years)
+</td>
+<td>
+-0.044<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(-0.049, -0.038)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Sex
+</td>
+<td>
+0.118<sup>**</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(0.018, 0.219)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Education (years)
+</td>
+<td>
+0.134<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(0.105, 0.163)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Time to follow-up (linear)
+</td>
+<td>
+-0.175<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(-0.194, -0.156)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Time to follow-up (quadratic)
+</td>
+<td>
+0.017<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(0.015, 0.020)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Observations
+</td>
+<td>
+1,147
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Log Likelihood
+</td>
+<td>
+-856.868
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Akaike Inf. Crit.
+</td>
+<td>
+1,733.735
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Bayesian Inf. Crit.
+</td>
+<td>
+1,784.184
+</td>
+</tr>
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+<em>Note:</em>
+</td>
+<td style="text-align:right">
+<sup><em></sup>p&lt;0.1; <sup><strong></sup>p&lt;0.05; <sup></strong></em></sup>p&lt;0.01
+</td>
+</tr>
+</table>
 </div>
 <div id="examining-the-interaction-between-wmh-and-hv-in-explaining-memory-decline" class="section level2">
 <h2>2. Examining the interaction between WMH and HV in explaining memory decline</h2>
 <p>We then adopted a data-driven approach to determine the role of WMH and HV in contributing to memory deficits. Using the null model as a baseline, three successive models were created: one with only the effects of WMH, a second with only the effects of HV, and a third with the simulatenous effects of WMH and HV.</p>
 <p>These three models, along with the null model, were then compared to see which model best explained the data. Since the random effect is identical across all models, the fixed effects are compared. Also all other models can be seen as restricted cases of the final model.</p>
 <p>In order to facilitate comparisons between models with different fixed effects, models were fit by minimising the negative log-likelihood. All models were then compared using a one-way ANOVA.</p>
-% Table created by stargazer v.5.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu % Date and time: vr, jan 19, 2018 - 16:53:18
-
-% Table created by stargazer v.5.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu % Date and time: vr, jan 19, 2018 - 16:53:18
-
-
-<p>Both models with WMH only and HV only provided significantly better fit in comparison to the null model. The model with HV alone fit better than the model with WMH alone. Importantly, however, the model with both WMH and HV provided the best fit to the data. As such, this model was re-fit using REML to obtain strong effects for standardised estimates.</p>
+<table style="text-align:center">
+<caption>
+<strong>Fixed effects results</strong>
+</caption>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="4">
+<em>Dependent variable:</em>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td colspan="4" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="4">
+Memory
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+Null
+</td>
+<td>
+WMH only
+</td>
+<td>
+HV only
+</td>
+<td>
+Full
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(1)
+</td>
+<td>
+(2)
+</td>
+<td>
+(3)
+</td>
+<td>
+(4)
+</td>
+</tr>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Baseline age (years)
+</td>
+<td>
+-.044<sup>***</sup>
+</td>
+<td>
+-.040<sup>***</sup>
+</td>
+<td>
+-.035<sup>***</sup>
+</td>
+<td>
+-.032<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(-.049, -.038)
+</td>
+<td>
+(-.047, -.034)
+</td>
+<td>
+(-.042, -.029)
+</td>
+<td>
+(-.039, -.025)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Sex
+</td>
+<td>
+.118<sup>*</sup>
+</td>
+<td>
+.126<sup>*</sup>
+</td>
+<td>
+.052
+</td>
+<td>
+.072
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(.018, .219)
+</td>
+<td>
+(.026, .227)
+</td>
+<td>
+(-.052, .156)
+</td>
+<td>
+(-.032, .176)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Education (years)
+</td>
+<td>
+.134<sup>***</sup>
+</td>
+<td>
+.132<sup>***</sup>
+</td>
+<td>
+.133<sup>***</sup>
+</td>
+<td>
+.136<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(.105, .163)
+</td>
+<td>
+(.104, .161)
+</td>
+<td>
+(.104, .161)
+</td>
+<td>
+(.108, .165)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Time to follow-up (linear)
+</td>
+<td>
+-.175<sup>***</sup>
+</td>
+<td>
+-.182<sup>***</sup>
+</td>
+<td>
+-.331<sup>***</sup>
+</td>
+<td>
+-.273<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(-.194, -.156)
+</td>
+<td>
+(-.201, -.162)
+</td>
+<td>
+(-.384, -.277)
+</td>
+<td>
+(-.330, -.215)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Time to follow-up (quadratic)
+</td>
+<td>
+.017<sup>***</sup>
+</td>
+<td>
+.021<sup>***</sup>
+</td>
+<td>
+.018<sup>***</sup>
+</td>
+<td>
+.019<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(.015, .020)
+</td>
+<td>
+(.019, .024)
+</td>
+<td>
+(.016, .020)
+</td>
+<td>
+(.017, .022)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+WMH
+</td>
+<td>
+</td>
+<td>
+-.014
+</td>
+<td>
+</td>
+<td>
+-.504<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+(-.053, .026)
+</td>
+<td>
+</td>
+<td>
+(-.748, -.259)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+WMH progression
+</td>
+<td>
+</td>
+<td>
+-.002<sup>***</sup>
+</td>
+<td>
+</td>
+<td>
+-.001<sup>*</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+(-.002, -.001)
+</td>
+<td>
+</td>
+<td>
+(-.001, -.0001)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+HV
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+.062<sup>*</sup>
+</td>
+<td>
+-.018
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+(.003, .120)
+</td>
+<td>
+(-.089, .053)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Hippocampal atrophy
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+.021<sup>***</sup>
+</td>
+<td>
+.013<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+(.015, .028)
+</td>
+<td>
+(.006, .020)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+WMH * HV interaction
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+.064<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+(.032, .095)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Observations
+</td>
+<td>
+1,147
+</td>
+<td>
+1,147
+</td>
+<td>
+1,147
+</td>
+<td>
+1,147
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Log Likelihood
+</td>
+<td>
+-856.868
+</td>
+<td>
+-842.012
+</td>
+<td>
+-822.121
+</td>
+<td>
+-807.224
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Akaike Inf. Crit.
+</td>
+<td>
+1,733.735
+</td>
+<td>
+1,708.023
+</td>
+<td>
+1,668.242
+</td>
+<td>
+1,644.448
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Bayesian Inf. Crit.
+</td>
+<td>
+1,784.184
+</td>
+<td>
+1,768.562
+</td>
+<td>
+1,728.781
+</td>
+<td>
+1,720.122
+</td>
+</tr>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+<em>Note:</em>
+</td>
+<td colspan="4" style="text-align:right">
+<sup><em></sup>p&lt;0.05; <sup><strong></sup>p&lt;0.01; <sup></strong></em></sup>p&lt;0.001
+</td>
+</tr>
+</table>
+<table style="text-align:center">
+<tr>
+<td colspan="9" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+Df
+</td>
+<td>
+AIC
+</td>
+<td>
+BIC
+</td>
+<td>
+logLik
+</td>
+<td>
+deviance
+</td>
+<td>
+Chisq
+</td>
+<td>
+Chi Df
+</td>
+<td>
+Pr(&gt; Chisq)
+</td>
+</tr>
+<tr>
+<td colspan="9" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+model1
+</td>
+<td>
+10
+</td>
+<td>
+1,733.735
+</td>
+<td>
+1,784.184
+</td>
+<td>
+-856.868
+</td>
+<td>
+1,713.735
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+model2
+</td>
+<td>
+12
+</td>
+<td>
+1,708.023
+</td>
+<td>
+1,768.562
+</td>
+<td>
+-842.012
+</td>
+<td>
+1,684.023
+</td>
+<td>
+29.712
+</td>
+<td>
+2
+</td>
+<td>
+0.00000
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+model3
+</td>
+<td>
+12
+</td>
+<td>
+1,668.242
+</td>
+<td>
+1,728.781
+</td>
+<td>
+-822.121
+</td>
+<td>
+1,644.242
+</td>
+<td>
+39.781
+</td>
+<td>
+0
+</td>
+<td>
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+model4
+</td>
+<td>
+15
+</td>
+<td>
+1,644.448
+</td>
+<td>
+1,720.122
+</td>
+<td>
+-807.224
+</td>
+<td>
+1,614.448
+</td>
+<td>
+29.794
+</td>
+<td>
+3
+</td>
+<td>
+0.00000
+</td>
+</tr>
+<tr>
+<td colspan="9" style="border-bottom: 1px solid black">
+</td>
+</tr>
+</table>
+<table style="text-align:center">
+<tr>
+<td colspan="9" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+Df
+</td>
+<td>
+AIC
+</td>
+<td>
+BIC
+</td>
+<td>
+logLik
+</td>
+<td>
+deviance
+</td>
+<td>
+Chisq
+</td>
+<td>
+Chi Df
+</td>
+<td>
+Pr(&gt; Chisq)
+</td>
+</tr>
+<tr>
+<td colspan="9" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+model5
+</td>
+<td>
+14
+</td>
+<td>
+1,658.078
+</td>
+<td>
+1,728.707
+</td>
+<td>
+-815.039
+</td>
+<td>
+1,630.078
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+model4
+</td>
+<td>
+15
+</td>
+<td>
+1,644.448
+</td>
+<td>
+1,720.122
+</td>
+<td>
+-807.224
+</td>
+<td>
+1,614.448
+</td>
+<td>
+15.630
+</td>
+<td>
+1
+</td>
+<td>
+0.0001
+</td>
+</tr>
+<tr>
+<td colspan="9" style="border-bottom: 1px solid black">
+</td>
+</tr>
+</table>
+<p>Both models with WMH only and HV only provided significantly better fit in comparison to the null model. The model with HV alone fit better than the model with WMH alone. Importantly, however, the model with both WMH and HV provided the best fit to the data.</p>
 </div>
 <div id="memory-examined-separately-as-long-term-memory-i.e.immediate-and-delayed-memory-and-working-memory" class="section level2">
 <h2>3. Memory examined separately as long-term memory (i.e. immediate and delayed memory) and working memory</h2>
 <p>Working memory and long-term memory were examined separately, as we have indications that they are affected differently by WMH and HV <a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>.</p>
 <div id="a.-working-memory" class="section level3">
 <h3>3a. Working memory</h3>
-<p>Working memory and long-term memory were examined separately.</p>
-% Table created by stargazer v.5.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu % Date and time: vr, jan 19, 2018 - 16:53:20
-
-
+<p>Here we examined Working Memory separately.</p>
+<table style="text-align:center">
+<caption>
+<strong>Fixed effects results</strong>
+</caption>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="4">
+<em>Dependent variable:</em>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td colspan="4" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="4">
+Working Memory
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+Null
+</td>
+<td>
+WMH only
+</td>
+<td>
+HV only
+</td>
+<td>
+Full
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(1)
+</td>
+<td>
+(2)
+</td>
+<td>
+(3)
+</td>
+<td>
+(4)
+</td>
+</tr>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Baseline age (years)
+</td>
+<td>
+-.046<sup>***</sup>
+</td>
+<td>
+-.043<sup>***</sup>
+</td>
+<td>
+-.041<sup>***</sup>
+</td>
+<td>
+-.038<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(-.054, -.038)
+</td>
+<td>
+(-.052, -.034)
+</td>
+<td>
+(-.051, -.032)
+</td>
+<td>
+(-.048, -.028)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Sex
+</td>
+<td>
+.191<sup>**</sup>
+</td>
+<td>
+.198<sup>**</sup>
+</td>
+<td>
+.152<sup>*</sup>
+</td>
+<td>
+.173<sup>*</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(.057, .324)
+</td>
+<td>
+(.065, .331)
+</td>
+<td>
+(.013, .292)
+</td>
+<td>
+(.034, .313)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Education (years)
+</td>
+<td>
+.132<sup>***</sup>
+</td>
+<td>
+.131<sup>***</sup>
+</td>
+<td>
+.131<sup>***</sup>
+</td>
+<td>
+.135<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(.094, .170)
+</td>
+<td>
+(.092, .169)
+</td>
+<td>
+(.093, .169)
+</td>
+<td>
+(.097, .173)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Time to follow-up (linear)
+</td>
+<td>
+-.092<sup>***</sup>
+</td>
+<td>
+-.095<sup>***</sup>
+</td>
+<td>
+-.171<sup>***</sup>
+</td>
+<td>
+-.119<sup>**</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(-.119, -.064)
+</td>
+<td>
+(-.123, -.068)
+</td>
+<td>
+(-.247, -.096)
+</td>
+<td>
+(-.200, -.038)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Time to follow-up (quadratic)
+</td>
+<td>
+.003
+</td>
+<td>
+.005<sup>**</sup>
+</td>
+<td>
+.003
+</td>
+<td>
+.004
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(-.001, .006)
+</td>
+<td>
+(.001, .009)
+</td>
+<td>
+(-.0004, .006)
+</td>
+<td>
+(-.0001, .007)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+WMH
+</td>
+<td>
+</td>
+<td>
+-.016
+</td>
+<td>
+</td>
+<td>
+-.534<sup>**</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+(-.070, .038)
+</td>
+<td>
+</td>
+<td>
+(-.869, -.199)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+WMH progression
+</td>
+<td>
+</td>
+<td>
+-.001<sup>*</sup>
+</td>
+<td>
+</td>
+<td>
+-.0004
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+(-.002, -.0002)
+</td>
+<td>
+</td>
+<td>
+(-.001, .0005)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+HV
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+.029
+</td>
+<td>
+-.057
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+(-.052, .111)
+</td>
+<td>
+(-.156, .042)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Hippocampal atrophy
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+.011<sup>*</sup>
+</td>
+<td>
+.004
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+(.002, .020)
+</td>
+<td>
+(-.006, .014)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+WMH * HV interaction
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+.067<sup>**</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+(.024, .111)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Observations
+</td>
+<td>
+1,132
+</td>
+<td>
+1,132
+</td>
+<td>
+1,132
+</td>
+<td>
+1,132
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Log Likelihood
+</td>
+<td>
+-1,186.406
+</td>
+<td>
+-1,182.732
+</td>
+<td>
+-1,181.520
+</td>
+<td>
+-1,174.766
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Akaike Inf. Crit.
+</td>
+<td>
+2,392.813
+</td>
+<td>
+2,389.464
+</td>
+<td>
+2,387.039
+</td>
+<td>
+2,379.532
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Bayesian Inf. Crit.
+</td>
+<td>
+2,443.130
+</td>
+<td>
+2,449.845
+</td>
+<td>
+2,447.420
+</td>
+<td>
+2,455.009
+</td>
+</tr>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+<em>Note:</em>
+</td>
+<td colspan="4" style="text-align:right">
+<sup><em></sup>p&lt;0.05; <sup><strong></sup>p&lt;0.01; <sup></strong></em></sup>p&lt;0.001
+</td>
+</tr>
+</table>
+<table style="text-align:center">
+<tr>
+<td colspan="9" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+Df
+</td>
+<td>
+AIC
+</td>
+<td>
+BIC
+</td>
+<td>
+logLik
+</td>
+<td>
+deviance
+</td>
+<td>
+Chisq
+</td>
+<td>
+Chi Df
+</td>
+<td>
+Pr(&gt; Chisq)
+</td>
+</tr>
+<tr>
+<td colspan="9" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+wm.model5
+</td>
+<td>
+14
+</td>
+<td>
+2,386.847
+</td>
+<td>
+2,457.291
+</td>
+<td>
+-1,179.423
+</td>
+<td>
+2,358.847
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+wm.model4
+</td>
+<td>
+15
+</td>
+<td>
+2,379.532
+</td>
+<td>
+2,455.009
+</td>
+<td>
+-1,174.766
+</td>
+<td>
+2,349.532
+</td>
+<td>
+9.314
+</td>
+<td>
+1
+</td>
+<td>
+0.002
+</td>
+</tr>
+<tr>
+<td colspan="9" style="border-bottom: 1px solid black">
+</td>
+</tr>
+</table>
 </div>
 <div id="b.-immediate-memory" class="section level3">
 <h3>3b. Immediate memory</h3>
-<p>Working memory and long-term memory were examined separately.</p>
-% Table created by stargazer v.5.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu % Date and time: vr, jan 19, 2018 - 16:53:21
-
-
+<p>Here we examined Immediate Memory separately.</p>
+<table style="text-align:center">
+<caption>
+<strong>Fixed effects results</strong>
+</caption>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="4">
+<em>Dependent variable:</em>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td colspan="4" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="4">
+Immediate Memory
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+Null
+</td>
+<td>
+WMH only
+</td>
+<td>
+HV only
+</td>
+<td>
+Full
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(1)
+</td>
+<td>
+(2)
+</td>
+<td>
+(3)
+</td>
+<td>
+(4)
+</td>
+</tr>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Baseline age (years)
+</td>
+<td>
+-.042<sup>***</sup>
+</td>
+<td>
+-.039<sup>***</sup>
+</td>
+<td>
+-.033<sup>***</sup>
+</td>
+<td>
+-.030<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(-.049, -.035)
+</td>
+<td>
+(-.046, -.031)
+</td>
+<td>
+(-.041, -.025)
+</td>
+<td>
+(-.039, -.021)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Sex
+</td>
+<td>
+.114
+</td>
+<td>
+.121<sup>*</sup>
+</td>
+<td>
+.046
+</td>
+<td>
+.065
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(-.003, .231)
+</td>
+<td>
+(.004, .239)
+</td>
+<td>
+(-.075, .167)
+</td>
+<td>
+(-.057, .186)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Education (years)
+</td>
+<td>
+.147<sup>***</sup>
+</td>
+<td>
+.145<sup>***</sup>
+</td>
+<td>
+.146<sup>***</sup>
+</td>
+<td>
+.149<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(.113, .181)
+</td>
+<td>
+(.111, .179)
+</td>
+<td>
+(.112, .179)
+</td>
+<td>
+(.116, .183)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Time to follow-up (linear)
+</td>
+<td>
+-.240<sup>***</sup>
+</td>
+<td>
+-.247<sup>***</sup>
+</td>
+<td>
+-.430<sup>***</sup>
+</td>
+<td>
+-.375<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(-.265, -.215)
+</td>
+<td>
+(-.272, -.222)
+</td>
+<td>
+(-.496, -.364)
+</td>
+<td>
+(-.446, -.305)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Time to follow-up (quadratic)
+</td>
+<td>
+.028<sup>***</sup>
+</td>
+<td>
+.032<sup>***</sup>
+</td>
+<td>
+.028<sup>***</sup>
+</td>
+<td>
+.030<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(.025, .031)
+</td>
+<td>
+(.028, .035)
+</td>
+<td>
+(.025, .031)
+</td>
+<td>
+(.027, .033)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+WMH
+</td>
+<td>
+</td>
+<td>
+-.011
+</td>
+<td>
+</td>
+<td>
+-.468<sup>**</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+(-.058, .036)
+</td>
+<td>
+</td>
+<td>
+(-.761, -.175)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+WMH progression
+</td>
+<td>
+</td>
+<td>
+-.002<sup>***</sup>
+</td>
+<td>
+</td>
+<td>
+-.001<sup>*</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+(-.003, -.001)
+</td>
+<td>
+</td>
+<td>
+(-.002, -.00003)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+HV
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+.050
+</td>
+<td>
+-.021
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+(-.020, .121)
+</td>
+<td>
+(-.107, .064)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Hippocampal atrophy
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+.026<sup>***</sup>
+</td>
+<td>
+.018<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+(.018, .034)
+</td>
+<td>
+(.010, .027)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+WMH * HV interaction
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+.059<sup>**</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+(.021, .097)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Observations
+</td>
+<td>
+1,146
+</td>
+<td>
+1,146
+</td>
+<td>
+1,146
+</td>
+<td>
+1,146
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Log Likelihood
+</td>
+<td>
+-1,082.382
+</td>
+<td>
+-1,070.884
+</td>
+<td>
+-1,051.291
+</td>
+<td>
+-1,041.592
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Akaike Inf. Crit.
+</td>
+<td>
+2,184.764
+</td>
+<td>
+2,165.767
+</td>
+<td>
+2,126.583
+</td>
+<td>
+2,113.184
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Bayesian Inf. Crit.
+</td>
+<td>
+2,235.204
+</td>
+<td>
+2,226.295
+</td>
+<td>
+2,187.111
+</td>
+<td>
+2,188.844
+</td>
+</tr>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+<em>Note:</em>
+</td>
+<td colspan="4" style="text-align:right">
+<sup><em></sup>p&lt;0.05; <sup><strong></sup>p&lt;0.01; <sup></strong></em></sup>p&lt;0.001
+</td>
+</tr>
+</table>
+<table style="text-align:center">
+<tr>
+<td colspan="9" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+Df
+</td>
+<td>
+AIC
+</td>
+<td>
+BIC
+</td>
+<td>
+logLik
+</td>
+<td>
+deviance
+</td>
+<td>
+Chisq
+</td>
+<td>
+Chi Df
+</td>
+<td>
+Pr(&gt; Chisq)
+</td>
+</tr>
+<tr>
+<td colspan="9" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+im.model5
+</td>
+<td>
+14
+</td>
+<td>
+2,120.532
+</td>
+<td>
+2,191.148
+</td>
+<td>
+-1,046.266
+</td>
+<td>
+2,092.532
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+im.model4
+</td>
+<td>
+15
+</td>
+<td>
+2,113.184
+</td>
+<td>
+2,188.844
+</td>
+<td>
+-1,041.592
+</td>
+<td>
+2,083.184
+</td>
+<td>
+9.348
+</td>
+<td>
+1
+</td>
+<td>
+0.002
+</td>
+</tr>
+<tr>
+<td colspan="9" style="border-bottom: 1px solid black">
+</td>
+</tr>
+</table>
 </div>
 <div id="c.-delayed-memory" class="section level3">
 <h3>3c. Delayed memory</h3>
-<p>Working memory and long-term memory were examined separately.</p>
-% Table created by stargazer v.5.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu % Date and time: vr, jan 19, 2018 - 16:53:23
-
-
+<p>Here we examined Delayed Memory separately.</p>
+<table style="text-align:center">
+<caption>
+<strong>Fixed effects results</strong>
+</caption>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="4">
+<em>Dependent variable:</em>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td colspan="4" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="4">
+Delayed Memory
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+Null
+</td>
+<td>
+WMH only
+</td>
+<td>
+HV only
+</td>
+<td>
+Full
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(1)
+</td>
+<td>
+(2)
+</td>
+<td>
+(3)
+</td>
+<td>
+(4)
+</td>
+</tr>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Baseline age (years)
+</td>
+<td>
+-.045<sup>***</sup>
+</td>
+<td>
+-.042<sup>***</sup>
+</td>
+<td>
+-.034<sup>***</sup>
+</td>
+<td>
+-.030<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(-.052, -.038)
+</td>
+<td>
+(-.050, -.033)
+</td>
+<td>
+(-.042, -.026)
+</td>
+<td>
+(-.039, -.021)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Sex
+</td>
+<td>
+.081
+</td>
+<td>
+.091
+</td>
+<td>
+-.008
+</td>
+<td>
+.016
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(-.041, .204)
+</td>
+<td>
+(-.032, .214)
+</td>
+<td>
+(-.133, .118)
+</td>
+<td>
+(-.110, .142)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Education (years)
+</td>
+<td>
+.122<sup>***</sup>
+</td>
+<td>
+.120<sup>***</sup>
+</td>
+<td>
+.121<sup>***</sup>
+</td>
+<td>
+.125<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(.087, .158)
+</td>
+<td>
+(.085, .156)
+</td>
+<td>
+(.086, .156)
+</td>
+<td>
+(.090, .159)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Time to follow-up (linear)
+</td>
+<td>
+-.194<sup>***</sup>
+</td>
+<td>
+-.201<sup>***</sup>
+</td>
+<td>
+-.370<sup>***</sup>
+</td>
+<td>
+-.310<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(-.219, -.169)
+</td>
+<td>
+(-.226, -.176)
+</td>
+<td>
+(-.435, -.304)
+</td>
+<td>
+(-.381, -.240)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Time to follow-up (quadratic)
+</td>
+<td>
+.023<sup>***</sup>
+</td>
+<td>
+.027<sup>***</sup>
+</td>
+<td>
+.023<sup>***</sup>
+</td>
+<td>
+.025<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(.020, .025)
+</td>
+<td>
+(.023, .030)
+</td>
+<td>
+(.020, .026)
+</td>
+<td>
+(.021, .028)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+WMH
+</td>
+<td>
+</td>
+<td>
+-.014
+</td>
+<td>
+</td>
+<td>
+-.511<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+(-.063, .035)
+</td>
+<td>
+</td>
+<td>
+(-.811, -.212)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+WMH progression
+</td>
+<td>
+</td>
+<td>
+-.002<sup>***</sup>
+</td>
+<td>
+</td>
+<td>
+-.001<sup>*</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+(-.003, -.001)
+</td>
+<td>
+</td>
+<td>
+(-.002, -.0001)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+HV
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+.089<sup>*</sup>
+</td>
+<td>
+.010
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+(.016, .161)
+</td>
+<td>
+(-.079, .098)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Hippocampal atrophy
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+.024<sup>***</sup>
+</td>
+<td>
+.016<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+(.016, .032)
+</td>
+<td>
+(.008, .025)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+WMH * HV interaction
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+.065<sup>**</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+(.026, .103)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Observations
+</td>
+<td>
+1,145
+</td>
+<td>
+1,145
+</td>
+<td>
+1,145
+</td>
+<td>
+1,145
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Log Likelihood
+</td>
+<td>
+-1,097.762
+</td>
+<td>
+-1,084.412
+</td>
+<td>
+-1,062.280
+</td>
+<td>
+-1,050.842
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Akaike Inf. Crit.
+</td>
+<td>
+2,215.523
+</td>
+<td>
+2,192.823
+</td>
+<td>
+2,148.560
+</td>
+<td>
+2,131.685
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Bayesian Inf. Crit.
+</td>
+<td>
+2,265.955
+</td>
+<td>
+2,253.341
+</td>
+<td>
+2,209.078
+</td>
+<td>
+2,207.332
+</td>
+</tr>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+<em>Note:</em>
+</td>
+<td colspan="4" style="text-align:right">
+<sup><em></sup>p&lt;0.05; <sup><strong></sup>p&lt;0.01; <sup></strong></em></sup>p&lt;0.001
+</td>
+</tr>
+</table>
+<table style="text-align:center">
+<tr>
+<td colspan="9" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+Df
+</td>
+<td>
+AIC
+</td>
+<td>
+BIC
+</td>
+<td>
+logLik
+</td>
+<td>
+deviance
+</td>
+<td>
+Chisq
+</td>
+<td>
+Chi Df
+</td>
+<td>
+Pr(&gt; Chisq)
+</td>
+</tr>
+<tr>
+<td colspan="9" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+dm.model5
+</td>
+<td>
+14
+</td>
+<td>
+2,140.403
+</td>
+<td>
+2,211.008
+</td>
+<td>
+-1,056.202
+</td>
+<td>
+2,112.403
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+dm.model4
+</td>
+<td>
+15
+</td>
+<td>
+2,131.685
+</td>
+<td>
+2,207.332
+</td>
+<td>
+-1,050.842
+</td>
+<td>
+2,101.685
+</td>
+<td>
+10.719
+</td>
+<td>
+1
+</td>
+<td>
+0.001
+</td>
+</tr>
+<tr>
+<td colspan="9" style="border-bottom: 1px solid black">
+</td>
+</tr>
+</table>
+<p>In all 3 memory domains, the full model with the WMH-HV interaction term showed significantly better model fit as well as a significant WMH-HV interaction term. The only difference was that in the model of Working Memory, the main effects of HV and hippocampal atrophy were not significant anymore.</p>
 </div>
 </div>
-<div id="determine-the-specificity-of-the-effect" class="section level2">
-<h2>4. Determine the specificity of the effect</h2>
+<div id="determine-the-specificity-of-the-effect---global-brain-atrophy" class="section level2">
+<h2>4. Determine the specificity of the effect - Global brain atrophy</h2>
 <p>We then compared this model with several alternative competing models to determine the specificity of the effect.</p>
 <div id="grey-matter-atrophy" class="section level3">
 <h3>4.1 Grey matter atrophy</h3>
-<p>First, we wanted to show that the effect of hippocampal atrophy was not part of general grey matter atrophy.</p>
-% Table created by stargazer v.5.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu % Date and time: vr, jan 19, 2018 - 16:53:25
-
-% Table created by stargazer v.5.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu % Date and time: vr, jan 19, 2018 - 16:53:25
-
-% Table created by stargazer v.5.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu % Date and time: vr, jan 19, 2018 - 16:53:25
-
-
+<p>We wanted to show that the effect of hippocampal atrophy was not part of general grey matter atrophy.</p>
+<table style="text-align:center">
+<caption>
+<strong>Fixed effects results</strong>
+</caption>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="4">
+<em>Dependent variable:</em>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td colspan="4" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="4">
+Memory
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+Null
+</td>
+<td>
+WMH only
+</td>
+<td>
+GMV only
+</td>
+<td>
+Full
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(1)
+</td>
+<td>
+(2)
+</td>
+<td>
+(3)
+</td>
+<td>
+(4)
+</td>
+</tr>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Baseline age (years)
+</td>
+<td>
+-.044<sup>***</sup>
+</td>
+<td>
+-.040<sup>***</sup>
+</td>
+<td>
+-.038<sup>***</sup>
+</td>
+<td>
+-.036<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(-.049, -.038)
+</td>
+<td>
+(-.047, -.034)
+</td>
+<td>
+(-.045, -.031)
+</td>
+<td>
+(-.043, -.029)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Sex
+</td>
+<td>
+.118<sup>*</sup>
+</td>
+<td>
+.126<sup>*</sup>
+</td>
+<td>
+.065
+</td>
+<td>
+.081
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(.018, .219)
+</td>
+<td>
+(.026, .227)
+</td>
+<td>
+(-.041, .171)
+</td>
+<td>
+(-.026, .187)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Education (years)
+</td>
+<td>
+.134<sup>***</sup>
+</td>
+<td>
+.132<sup>***</sup>
+</td>
+<td>
+.132<sup>***</sup>
+</td>
+<td>
+.133<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(.105, .163)
+</td>
+<td>
+(.104, .161)
+</td>
+<td>
+(.103, .161)
+</td>
+<td>
+(.104, .162)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Time to follow-up (linear)
+</td>
+<td>
+-.175<sup>***</sup>
+</td>
+<td>
+-.182<sup>***</sup>
+</td>
+<td>
+-.472<sup>***</sup>
+</td>
+<td>
+-.395<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(-.194, -.156)
+</td>
+<td>
+(-.201, -.162)
+</td>
+<td>
+(-.555, -.389)
+</td>
+<td>
+(-.488, -.303)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Time to follow-up (quadratic)
+</td>
+<td>
+.017<sup>***</sup>
+</td>
+<td>
+.021<sup>***</sup>
+</td>
+<td>
+.019<sup>***</sup>
+</td>
+<td>
+.020<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(.015, .020)
+</td>
+<td>
+(.019, .024)
+</td>
+<td>
+(.017, .021)
+</td>
+<td>
+(.018, .023)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+WMH
+</td>
+<td>
+</td>
+<td>
+-.014
+</td>
+<td>
+</td>
+<td>
+-.500<sup>*</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+(-.053, .026)
+</td>
+<td>
+</td>
+<td>
+(-.888, -.112)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+WMH progression
+</td>
+<td>
+</td>
+<td>
+-.002<sup>***</sup>
+</td>
+<td>
+</td>
+<td>
+-.001<sup>*</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+(-.002, -.001)
+</td>
+<td>
+</td>
+<td>
+(-.001, -.00004)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+GMV
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+.0004
+</td>
+<td>
+-.001
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+(-.001, .002)
+</td>
+<td>
+(-.002, .001)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+GM atrophy
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+.0005<sup>***</sup>
+</td>
+<td>
+.0004<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+(.0004, .001)
+</td>
+<td>
+(.0002, .001)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+WMH * GMV interaction
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+.001<sup>*</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+(.0002, .001)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Observations
+</td>
+<td>
+1,147
+</td>
+<td>
+1,147
+</td>
+<td>
+1,147
+</td>
+<td>
+1,147
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Log Likelihood
+</td>
+<td>
+-856.868
+</td>
+<td>
+-842.012
+</td>
+<td>
+-827.147
+</td>
+<td>
+-819.365
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Akaike Inf. Crit.
+</td>
+<td>
+1,733.735
+</td>
+<td>
+1,708.023
+</td>
+<td>
+1,678.294
+</td>
+<td>
+1,668.730
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Bayesian Inf. Crit.
+</td>
+<td>
+1,784.184
+</td>
+<td>
+1,768.562
+</td>
+<td>
+1,738.833
+</td>
+<td>
+1,744.404
+</td>
+</tr>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+<em>Note:</em>
+</td>
+<td colspan="4" style="text-align:right">
+<sup><em></sup>p&lt;0.05; <sup><strong></sup>p&lt;0.01; <sup></strong></em></sup>p&lt;0.001
+</td>
+</tr>
+</table>
+<table style="text-align:center">
+<tr>
+<td colspan="9" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+Df
+</td>
+<td>
+AIC
+</td>
+<td>
+BIC
+</td>
+<td>
+logLik
+</td>
+<td>
+deviance
+</td>
+<td>
+Chisq
+</td>
+<td>
+Chi Df
+</td>
+<td>
+Pr(&gt; Chisq)
+</td>
+</tr>
+<tr>
+<td colspan="9" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+model4
+</td>
+<td>
+15
+</td>
+<td>
+1,644.448
+</td>
+<td>
+1,720.122
+</td>
+<td>
+-807.224
+</td>
+<td>
+1,614.448
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+gm.model4
+</td>
+<td>
+15
+</td>
+<td>
+1,668.730
+</td>
+<td>
+1,744.404
+</td>
+<td>
+-819.365
+</td>
+<td>
+1,638.730
+</td>
+<td>
+0
+</td>
+<td>
+0
+</td>
+<td>
+1
+</td>
+</tr>
+<tr>
+<td colspan="9" style="border-bottom: 1px solid black">
+</td>
+</tr>
+</table>
+<table style="text-align:center">
+<tr>
+<td colspan="9" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+Df
+</td>
+<td>
+AIC
+</td>
+<td>
+BIC
+</td>
+<td>
+logLik
+</td>
+<td>
+deviance
+</td>
+<td>
+Chisq
+</td>
+<td>
+Chi Df
+</td>
+<td>
+Pr(&gt; Chisq)
+</td>
+</tr>
+<tr>
+<td colspan="9" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+gm.model5
+</td>
+<td>
+14
+</td>
+<td>
+1,672.722
+</td>
+<td>
+1,743.351
+</td>
+<td>
+-822.361
+</td>
+<td>
+1,644.722
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+gm.model4
+</td>
+<td>
+15
+</td>
+<td>
+1,668.730
+</td>
+<td>
+1,744.404
+</td>
+<td>
+-819.365
+</td>
+<td>
+1,638.730
+</td>
+<td>
+5.992
+</td>
+<td>
+1
+</td>
+<td>
+0.014
+</td>
+</tr>
+<tr>
+<td colspan="9" style="border-bottom: 1px solid black">
+</td>
+</tr>
+</table>
+<table style="text-align:center">
+<tr>
+<td colspan="9" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+Df
+</td>
+<td>
+AIC
+</td>
+<td>
+BIC
+</td>
+<td>
+logLik
+</td>
+<td>
+deviance
+</td>
+<td>
+Chisq
+</td>
+<td>
+Chi Df
+</td>
+<td>
+Pr(&gt; Chisq)
+</td>
+</tr>
+<tr>
+<td colspan="9" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+gm.m5
+</td>
+<td>
+13
+</td>
+<td>
+1,744.544
+</td>
+<td>
+1,810.127
+</td>
+<td>
+-859.272
+</td>
+<td>
+1,718.544
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+gm.m4
+</td>
+<td>
+14
+</td>
+<td>
+1,742.865
+</td>
+<td>
+1,813.494
+</td>
+<td>
+-857.433
+</td>
+<td>
+1,714.865
+</td>
+<td>
+3.678
+</td>
+<td>
+1
+</td>
+<td>
+0.055
+</td>
+</tr>
+<tr>
+<td colspan="9" style="border-bottom: 1px solid black">
+</td>
+</tr>
+</table>
+<p>The effect was not specific to hippocampal atrophy, as the interaction term of WMH with GMV was also significantly associated with memory performance.</p>
 </div>
+<div id="combined-model-with-both-hv-gmv-interactions" class="section level3">
+<h3>4.2 Combined model with both HV &amp; GMV interactions</h3>
+<p>We next built a combined model with both WMH-HV and WMH-GMV interactions included, to examine the relative strengths of the WMH-HV and WMH-GMV interactions.</p>
+<table style="text-align:center">
+<caption>
+<strong>Fixed effects results</strong>
+</caption>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="4">
+<em>Dependent variable:</em>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td colspan="4" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="4">
+Memory
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+WMH only
+</td>
+<td>
+WMH * HV
+</td>
+<td>
+WMH * GMV
+</td>
+<td>
+Both
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(1)
+</td>
+<td>
+(2)
+</td>
+<td>
+(3)
+</td>
+<td>
+(4)
+</td>
+</tr>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Baseline age (years)
+</td>
+<td>
+-.040<sup>***</sup>
+</td>
+<td>
+-.032<sup>***</sup>
+</td>
+<td>
+-.036<sup>***</sup>
+</td>
+<td>
+-.031<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(-.047, -.034)
+</td>
+<td>
+(-.039, -.025)
+</td>
+<td>
+(-.043, -.029)
+</td>
+<td>
+(-.039, -.024)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Sex
+</td>
+<td>
+.126<sup>*</sup>
+</td>
+<td>
+.072
+</td>
+<td>
+.081
+</td>
+<td>
+.058
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(.026, .227)
+</td>
+<td>
+(-.032, .176)
+</td>
+<td>
+(-.026, .187)
+</td>
+<td>
+(-.048, .165)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Education (years)
+</td>
+<td>
+.132<sup>***</sup>
+</td>
+<td>
+.136<sup>***</sup>
+</td>
+<td>
+.133<sup>***</sup>
+</td>
+<td>
+.136<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(.104, .161)
+</td>
+<td>
+(.108, .165)
+</td>
+<td>
+(.104, .162)
+</td>
+<td>
+(.108, .164)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Time to follow-up (linear)
+</td>
+<td>
+-.182<sup>***</sup>
+</td>
+<td>
+-.273<sup>***</sup>
+</td>
+<td>
+-.395<sup>***</sup>
+</td>
+<td>
+-.364<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(-.201, -.162)
+</td>
+<td>
+(-.330, -.215)
+</td>
+<td>
+(-.488, -.303)
+</td>
+<td>
+(-.454, -.273)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Time to follow-up (quadratic)
+</td>
+<td>
+.021<sup>***</sup>
+</td>
+<td>
+.019<sup>***</sup>
+</td>
+<td>
+.020<sup>***</sup>
+</td>
+<td>
+.019<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(.019, .024)
+</td>
+<td>
+(.017, .022)
+</td>
+<td>
+(.018, .023)
+</td>
+<td>
+(.017, .022)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+WMH
+</td>
+<td>
+-.014
+</td>
+<td>
+-.504<sup>***</sup>
+</td>
+<td>
+-.500<sup>*</sup>
+</td>
+<td>
+-.606<sup>**</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(-.053, .026)
+</td>
+<td>
+(-.748, -.259)
+</td>
+<td>
+(-.888, -.112)
+</td>
+<td>
+(-.992, -.221)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+WMH progression
+</td>
+<td>
+-.002<sup>***</sup>
+</td>
+<td>
+-.001<sup>*</sup>
+</td>
+<td>
+-.001<sup>*</sup>
+</td>
+<td>
+-.0005
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(-.002, -.001)
+</td>
+<td>
+(-.001, -.0001)
+</td>
+<td>
+(-.001, -.00004)
+</td>
+<td>
+(-.001, .0002)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+HV
+</td>
+<td>
+</td>
+<td>
+-.018
+</td>
+<td>
+</td>
+<td>
+.007
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+(-.089, .053)
+</td>
+<td>
+</td>
+<td>
+(-.074, .087)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Hippocampal atrophy
+</td>
+<td>
+</td>
+<td>
+.013<sup>***</sup>
+</td>
+<td>
+</td>
+<td>
+.007
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+(.006, .020)
+</td>
+<td>
+</td>
+<td>
+(-.002, .016)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+WMH * HV interaction
+</td>
+<td>
+</td>
+<td>
+.064<sup>***</sup>
+</td>
+<td>
+</td>
+<td>
+.056<sup>**</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+(.032, .095)
+</td>
+<td>
+</td>
+<td>
+(.018, .093)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+GMV
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+-.001
+</td>
+<td>
+-.001
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+(-.002, .001)
+</td>
+<td>
+(-.002, .001)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+GM atrophy
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+.0004<sup>***</sup>
+</td>
+<td>
+.0002<sup>*</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+(.0002, .001)
+</td>
+<td>
+(.00005, .0004)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+WMH * GM interaction
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+.001<sup>*</sup>
+</td>
+<td>
+.0003
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+(.0002, .001)
+</td>
+<td>
+(-.0005, .001)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Observations
+</td>
+<td>
+1,147
+</td>
+<td>
+1,147
+</td>
+<td>
+1,147
+</td>
+<td>
+1,147
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Log Likelihood
+</td>
+<td>
+-842.012
+</td>
+<td>
+-807.224
+</td>
+<td>
+-819.365
+</td>
+<td>
+-802.709
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Akaike Inf. Crit.
+</td>
+<td>
+1,708.023
+</td>
+<td>
+1,644.448
+</td>
+<td>
+1,668.730
+</td>
+<td>
+1,641.419
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Bayesian Inf. Crit.
+</td>
+<td>
+1,768.562
+</td>
+<td>
+1,720.122
+</td>
+<td>
+1,744.404
+</td>
+<td>
+1,732.227
+</td>
+</tr>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+<em>Note:</em>
+</td>
+<td colspan="4" style="text-align:right">
+<sup><em></sup>p&lt;0.05; <sup><strong></sup>p&lt;0.01; <sup></strong></em></sup>p&lt;0.001
+</td>
+</tr>
+</table>
+<table style="text-align:center">
+<tr>
+<td colspan="9" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+Df
+</td>
+<td>
+AIC
+</td>
+<td>
+BIC
+</td>
+<td>
+logLik
+</td>
+<td>
+deviance
+</td>
+<td>
+Chisq
+</td>
+<td>
+Chi Df
+</td>
+<td>
+Pr(&gt; Chisq)
+</td>
+</tr>
+<tr>
+<td colspan="9" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+spec.m.wmh
+</td>
+<td>
+12
+</td>
+<td>
+1,708.023
+</td>
+<td>
+1,768.562
+</td>
+<td>
+-842.012
+</td>
+<td>
+1,684.023
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+spec.m.hv
+</td>
+<td>
+15
+</td>
+<td>
+1,644.448
+</td>
+<td>
+1,720.122
+</td>
+<td>
+-807.224
+</td>
+<td>
+1,614.448
+</td>
+<td>
+69.575
+</td>
+<td>
+3
+</td>
+<td>
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+spec.m.gmv
+</td>
+<td>
+15
+</td>
+<td>
+1,668.730
+</td>
+<td>
+1,744.404
+</td>
+<td>
+-819.365
+</td>
+<td>
+1,638.730
+</td>
+<td>
+0
+</td>
+<td>
+0
+</td>
+<td>
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+spec.m.both
+</td>
+<td>
+18
+</td>
+<td>
+1,641.419
+</td>
+<td>
+1,732.227
+</td>
+<td>
+-802.709
+</td>
+<td>
+1,605.419
+</td>
+<td>
+33.311
+</td>
+<td>
+3
+</td>
+<td>
+0.00000
+</td>
+</tr>
+<tr>
+<td colspan="9" style="border-bottom: 1px solid black">
+</td>
+</tr>
+</table>
+<p>The effect was not specific to hippocampal atrophy, as the interaction term of WMH with GMV was also significantly associated with memory performance. However, when GMV and HV were both included in the model, only the WMH-HV interaction remained significant.</p>
+</div>
+</div>
+<div id="determine-the-specificity-of-the-effect---other-cognitive-domains" class="section level2">
+<h2>5. Determine the specificity of the effect - Other cognitive domains</h2>
+<p>We then compared this model with several alternative competing models to determine the specificity of the effect.</p>
 <div id="global-cognition" class="section level3">
-<h3>4.2 Global cognition</h3>
-<p>Next, we wanted to show that the effect is specific for memory, rather than general cognition.</p>
-% Table created by stargazer v.5.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu % Date and time: vr, jan 19, 2018 - 16:53:26
-
-
+<h3>5.1 Global cognition</h3>
+<p>We wanted to test whether the effect is specific for memory, rather than general cognition.</p>
+<table style="text-align:center">
+<caption>
+<strong>Fixed effects results</strong>
+</caption>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="4">
+<em>Dependent variable:</em>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td colspan="4" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="4">
+Cognitive Index
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+Null
+</td>
+<td>
+WMH only
+</td>
+<td>
+HV only
+</td>
+<td>
+Full
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(1)
+</td>
+<td>
+(2)
+</td>
+<td>
+(3)
+</td>
+<td>
+(4)
+</td>
+</tr>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Baseline age (years)
+</td>
+<td>
+-.043<sup>***</sup>
+</td>
+<td>
+-.039<sup>***</sup>
+</td>
+<td>
+-.034<sup>***</sup>
+</td>
+<td>
+-.030<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(-.048, -.037)
+</td>
+<td>
+(-.045, -.033)
+</td>
+<td>
+(-.040, -.027)
+</td>
+<td>
+(-.037, -.024)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Sex
+</td>
+<td>
+.115<sup>*</sup>
+</td>
+<td>
+.126<sup>**</sup>
+</td>
+<td>
+.045
+</td>
+<td>
+.067
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(.022, .209)
+</td>
+<td>
+(.033, .219)
+</td>
+<td>
+(-.052, .143)
+</td>
+<td>
+(-.030, .163)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Education (years)
+</td>
+<td>
+.166<sup>***</sup>
+</td>
+<td>
+.164<sup>***</sup>
+</td>
+<td>
+.164<sup>***</sup>
+</td>
+<td>
+.167<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(.139, .192)
+</td>
+<td>
+(.137, .190)
+</td>
+<td>
+(.138, .191)
+</td>
+<td>
+(.140, .193)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Time to follow-up (linear)
+</td>
+<td>
+-.125<sup>***</sup>
+</td>
+<td>
+-.132<sup>***</sup>
+</td>
+<td>
+-.275<sup>***</sup>
+</td>
+<td>
+-.224<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(-.140, -.111)
+</td>
+<td>
+(-.146, -.117)
+</td>
+<td>
+(-.317, -.233)
+</td>
+<td>
+(-.270, -.178)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Time to follow-up (quadratic)
+</td>
+<td>
+.010<sup>***</sup>
+</td>
+<td>
+.014<sup>***</sup>
+</td>
+<td>
+.011<sup>***</sup>
+</td>
+<td>
+.012<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(.009, .012)
+</td>
+<td>
+(.012, .016)
+</td>
+<td>
+(.009, .012)
+</td>
+<td>
+(.010, .014)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+WMH
+</td>
+<td>
+</td>
+<td>
+-.023
+</td>
+<td>
+</td>
+<td>
+-.431<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+(-.058, .012)
+</td>
+<td>
+</td>
+<td>
+(-.644, -.218)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+WMH progression
+</td>
+<td>
+</td>
+<td>
+-.002<sup>***</sup>
+</td>
+<td>
+</td>
+<td>
+-.001<sup>**</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+(-.002, -.001)
+</td>
+<td>
+</td>
+<td>
+(-.001, -.0002)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+HV
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+.072<sup>**</sup>
+</td>
+<td>
+.002
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+(.021, .123)
+</td>
+<td>
+(-.060, .065)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Hippocampal atrophy
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+.020<sup>***</sup>
+</td>
+<td>
+.013<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+(.015, .025)
+</td>
+<td>
+(.008, .019)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+WMH * HV interaction
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+.053<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+(.026, .080)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Observations
+</td>
+<td>
+1,147
+</td>
+<td>
+1,147
+</td>
+<td>
+1,147
+</td>
+<td>
+1,147
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Log Likelihood
+</td>
+<td>
+-658.432
+</td>
+<td>
+-638.823
+</td>
+<td>
+-609.023
+</td>
+<td>
+-592.641
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Akaike Inf. Crit.
+</td>
+<td>
+1,336.864
+</td>
+<td>
+1,301.647
+</td>
+<td>
+1,242.046
+</td>
+<td>
+1,215.282
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Bayesian Inf. Crit.
+</td>
+<td>
+1,387.313
+</td>
+<td>
+1,362.185
+</td>
+<td>
+1,302.585
+</td>
+<td>
+1,290.956
+</td>
+</tr>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+<em>Note:</em>
+</td>
+<td colspan="4" style="text-align:right">
+<sup><em></sup>p&lt;0.05; <sup><strong></sup>p&lt;0.01; <sup></strong></em></sup>p&lt;0.001
+</td>
+</tr>
+</table>
+<table style="text-align:center">
+<tr>
+<td colspan="9" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+Df
+</td>
+<td>
+AIC
+</td>
+<td>
+BIC
+</td>
+<td>
+logLik
+</td>
+<td>
+deviance
+</td>
+<td>
+Chisq
+</td>
+<td>
+Chi Df
+</td>
+<td>
+Pr(&gt; Chisq)
+</td>
+</tr>
+<tr>
+<td colspan="9" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+ci.model5
+</td>
+<td>
+14
+</td>
+<td>
+1,227.553
+</td>
+<td>
+1,298.182
+</td>
+<td>
+-599.777
+</td>
+<td>
+1,199.553
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+ci.model4
+</td>
+<td>
+15
+</td>
+<td>
+1,215.282
+</td>
+<td>
+1,290.956
+</td>
+<td>
+-592.641
+</td>
+<td>
+1,185.282
+</td>
+<td>
+14.271
+</td>
+<td>
+1
+</td>
+<td>
+0.0002
+</td>
+</tr>
+<tr>
+<td colspan="9" style="border-bottom: 1px solid black">
+</td>
+</tr>
+</table>
 </div>
 <div id="psychomotor-speed" class="section level3">
-<h3>4.3 Psychomotor speed</h3>
-<p>Next, we wanted to show that the effect is specific for memory, rather than psychomotor speed.</p>
-% Table created by stargazer v.5.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu % Date and time: vr, jan 19, 2018 - 16:53:28
-
-
+<h3>5.2 Psychomotor speed</h3>
+<p>Next, we wanted to test whether the effect is specific for memory, rather than psychomotor speed.</p>
+<table style="text-align:center">
+<caption>
+<strong>Fixed effects results</strong>
+</caption>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="4">
+<em>Dependent variable:</em>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td colspan="4" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="4">
+Psychomotor Speed
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+Null
+</td>
+<td>
+WMH only
+</td>
+<td>
+HV only
+</td>
+<td>
+Full
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(1)
+</td>
+<td>
+(2)
+</td>
+<td>
+(3)
+</td>
+<td>
+(4)
+</td>
+</tr>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Baseline age (years)
+</td>
+<td>
+-.045<sup>***</sup>
+</td>
+<td>
+-.040<sup>***</sup>
+</td>
+<td>
+-.036<sup>***</sup>
+</td>
+<td>
+-.031<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(-.052, -.039)
+</td>
+<td>
+(-.047, -.032)
+</td>
+<td>
+(-.043, -.028)
+</td>
+<td>
+(-.039, -.023)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Sex
+</td>
+<td>
+.161<sup>**</sup>
+</td>
+<td>
+.175<sup>**</sup>
+</td>
+<td>
+.082
+</td>
+<td>
+.107
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(.048, .273)
+</td>
+<td>
+(.063, .287)
+</td>
+<td>
+(-.035, .200)
+</td>
+<td>
+(-.010, .224)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Education (years)
+</td>
+<td>
+.171<sup>***</sup>
+</td>
+<td>
+.168<sup>***</sup>
+</td>
+<td>
+.170<sup>***</sup>
+</td>
+<td>
+.169<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(.138, .203)
+</td>
+<td>
+(.136, .200)
+</td>
+<td>
+(.137, .202)
+</td>
+<td>
+(.137, .201)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Time to follow-up (linear)
+</td>
+<td>
+-.087<sup>***</sup>
+</td>
+<td>
+-.091<sup>***</sup>
+</td>
+<td>
+-.187<sup>***</sup>
+</td>
+<td>
+-.156<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(-.104, -.071)
+</td>
+<td>
+(-.108, -.075)
+</td>
+<td>
+(-.240, -.135)
+</td>
+<td>
+(-.214, -.098)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Time to follow-up (quadratic)
+</td>
+<td>
+.004<sup>***</sup>
+</td>
+<td>
+.007<sup>***</sup>
+</td>
+<td>
+.005<sup>***</sup>
+</td>
+<td>
+.006<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(.002, .006)
+</td>
+<td>
+(.005, .009)
+</td>
+<td>
+(.003, .006)
+</td>
+<td>
+(.004, .008)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+WMH
+</td>
+<td>
+</td>
+<td>
+-.051<sup>*</sup>
+</td>
+<td>
+</td>
+<td>
+-.305<sup>*</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+(-.094, -.009)
+</td>
+<td>
+</td>
+<td>
+(-.564, -.047)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+WMH progression
+</td>
+<td>
+</td>
+<td>
+-.001<sup>***</sup>
+</td>
+<td>
+</td>
+<td>
+-.001
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+(-.002, -.0005)
+</td>
+<td>
+</td>
+<td>
+(-.001, .0001)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+HV
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+.093<sup>**</sup>
+</td>
+<td>
+.043
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+(.030, .156)
+</td>
+<td>
+(-.033, .120)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Hippocampal atrophy
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+.014<sup>***</sup>
+</td>
+<td>
+.010<sup>**</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+(.008, .020)
+</td>
+<td>
+(.003, .017)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+WMH * HV interaction
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+.033<sup>*</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+(.0001, .067)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Observations
+</td>
+<td>
+1,138
+</td>
+<td>
+1,138
+</td>
+<td>
+1,138
+</td>
+<td>
+1,138
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Log Likelihood
+</td>
+<td>
+-842.978
+</td>
+<td>
+-831.142
+</td>
+<td>
+-819.337
+</td>
+<td>
+-810.764
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Akaike Inf. Crit.
+</td>
+<td>
+1,705.957
+</td>
+<td>
+1,686.284
+</td>
+<td>
+1,662.675
+</td>
+<td>
+1,651.528
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Bayesian Inf. Crit.
+</td>
+<td>
+1,756.327
+</td>
+<td>
+1,746.729
+</td>
+<td>
+1,723.119
+</td>
+<td>
+1,727.083
+</td>
+</tr>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+<em>Note:</em>
+</td>
+<td colspan="4" style="text-align:right">
+<sup><em></sup>p&lt;0.05; <sup><strong></sup>p&lt;0.01; <sup></strong></em></sup>p&lt;0.001
+</td>
+</tr>
+</table>
+<table style="text-align:center">
+<tr>
+<td colspan="9" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+Df
+</td>
+<td>
+AIC
+</td>
+<td>
+BIC
+</td>
+<td>
+logLik
+</td>
+<td>
+deviance
+</td>
+<td>
+Chisq
+</td>
+<td>
+Chi Df
+</td>
+<td>
+Pr(&gt; Chisq)
+</td>
+</tr>
+<tr>
+<td colspan="9" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+ps.model5
+</td>
+<td>
+14
+</td>
+<td>
+1,653.340
+</td>
+<td>
+1,723.859
+</td>
+<td>
+-812.670
+</td>
+<td>
+1,625.340
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+ps.model4
+</td>
+<td>
+15
+</td>
+<td>
+1,651.528
+</td>
+<td>
+1,727.083
+</td>
+<td>
+-810.764
+</td>
+<td>
+1,621.528
+</td>
+<td>
+3.812
+</td>
+<td>
+1
+</td>
+<td>
+0.051
+</td>
+</tr>
+<tr>
+<td colspan="9" style="border-bottom: 1px solid black">
+</td>
+</tr>
+</table>
 </div>
 <div id="executive-function" class="section level3">
-<h3>4.4 Executive function</h3>
-<p>Next, we wanted to show that the effect is specific for memory, rather than executive function.</p>
-% Table created by stargazer v.5.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu % Date and time: vr, jan 19, 2018 - 16:53:30
-
-
+<h3>5.3 Executive function</h3>
+<p>Next, we wanted to test whether the effect is specific for memory, rather than executive function.</p>
+<table style="text-align:center">
+<caption>
+<strong>Fixed effects results</strong>
+</caption>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="4">
+<em>Dependent variable:</em>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td colspan="4" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="4">
+Executive function
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+Null
+</td>
+<td>
+WMH only
+</td>
+<td>
+HV only
+</td>
+<td>
+Full
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(1)
+</td>
+<td>
+(2)
+</td>
+<td>
+(3)
+</td>
+<td>
+(4)
+</td>
+</tr>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Baseline age (years)
+</td>
+<td>
+-.038<sup>***</sup>
+</td>
+<td>
+-.035<sup>***</sup>
+</td>
+<td>
+-.032<sup>***</sup>
+</td>
+<td>
+-.029<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(-.044, -.033)
+</td>
+<td>
+(-.042, -.029)
+</td>
+<td>
+(-.039, -.025)
+</td>
+<td>
+(-.036, -.021)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Sex
+</td>
+<td>
+.037
+</td>
+<td>
+.046
+</td>
+<td>
+-.017
+</td>
+<td>
+.003
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(-.063, .136)
+</td>
+<td>
+(-.054, .145)
+</td>
+<td>
+(-.122, .087)
+</td>
+<td>
+(-.101, .108)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Education (years)
+</td>
+<td>
+.181<sup>***</sup>
+</td>
+<td>
+.179<sup>***</sup>
+</td>
+<td>
+.179<sup>***</sup>
+</td>
+<td>
+.182<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(.152, .209)
+</td>
+<td>
+(.151, .208)
+</td>
+<td>
+(.151, .208)
+</td>
+<td>
+(.154, .211)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Time to follow-up (linear)
+</td>
+<td>
+-.038<sup>***</sup>
+</td>
+<td>
+-.044<sup>***</sup>
+</td>
+<td>
+-.180<sup>***</sup>
+</td>
+<td>
+-.126<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(-.057, -.018)
+</td>
+<td>
+(-.064, -.024)
+</td>
+<td>
+(-.231, -.128)
+</td>
+<td>
+(-.181, -.070)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Time to follow-up (quadratic)
+</td>
+<td>
+.001
+</td>
+<td>
+.004<sup>**</sup>
+</td>
+<td>
+.001
+</td>
+<td>
+.003<sup>*</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(-.002, .003)
+</td>
+<td>
+(.002, .007)
+</td>
+<td>
+(-.001, .003)
+</td>
+<td>
+(.0002, .005)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+WMH
+</td>
+<td>
+</td>
+<td>
+-.013
+</td>
+<td>
+</td>
+<td>
+-.429<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+(-.052, .026)
+</td>
+<td>
+</td>
+<td>
+(-.674, -.184)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+WMH progression
+</td>
+<td>
+</td>
+<td>
+-.002<sup>***</sup>
+</td>
+<td>
+</td>
+<td>
+-.001<sup>**</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+(-.002, -.001)
+</td>
+<td>
+</td>
+<td>
+(-.001, -.0002)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+HV
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+.044
+</td>
+<td>
+-.024
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+(-.014, .102)
+</td>
+<td>
+(-.095, .047)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Hippocampal atrophy
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+.019<sup>***</sup>
+</td>
+<td>
+.012<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+(.013, .025)
+</td>
+<td>
+(.005, .019)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+WMH * HV interaction
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+.054<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+(.022, .085)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Observations
+</td>
+<td>
+1,147
+</td>
+<td>
+1,147
+</td>
+<td>
+1,147
+</td>
+<td>
+1,147
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Log Likelihood
+</td>
+<td>
+-844.436
+</td>
+<td>
+-829.147
+</td>
+<td>
+-816.935
+</td>
+<td>
+-803.482
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Akaike Inf. Crit.
+</td>
+<td>
+1,708.873
+</td>
+<td>
+1,682.293
+</td>
+<td>
+1,657.870
+</td>
+<td>
+1,636.964
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Bayesian Inf. Crit.
+</td>
+<td>
+1,759.322
+</td>
+<td>
+1,742.832
+</td>
+<td>
+1,718.409
+</td>
+<td>
+1,712.637
+</td>
+</tr>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+<em>Note:</em>
+</td>
+<td colspan="4" style="text-align:right">
+<sup><em></sup>p&lt;0.05; <sup><strong></sup>p&lt;0.01; <sup></strong></em></sup>p&lt;0.001
+</td>
+</tr>
+</table>
+<table style="text-align:center">
+<tr>
+<td colspan="9" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+Df
+</td>
+<td>
+AIC
+</td>
+<td>
+BIC
+</td>
+<td>
+logLik
+</td>
+<td>
+deviance
+</td>
+<td>
+Chisq
+</td>
+<td>
+Chi Df
+</td>
+<td>
+Pr(&gt; Chisq)
+</td>
+</tr>
+<tr>
+<td colspan="9" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+ef.model5
+</td>
+<td>
+14
+</td>
+<td>
+1,646.107
+</td>
+<td>
+1,716.735
+</td>
+<td>
+-809.053
+</td>
+<td>
+1,618.107
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+ef.model4
+</td>
+<td>
+15
+</td>
+<td>
+1,636.964
+</td>
+<td>
+1,712.637
+</td>
+<td>
+-803.482
+</td>
+<td>
+1,606.964
+</td>
+<td>
+11.143
+</td>
+<td>
+1
+</td>
+<td>
+0.001
+</td>
+</tr>
+<tr>
+<td colspan="9" style="border-bottom: 1px solid black">
+</td>
+</tr>
+</table>
+<p>The combined effects of WMH and hippocampal atrophy are not specific to memory performance; they also explain global cognitive functioning as well as psychomotor speed and executive function.</p>
 </div>
 </div>
 <div class="footnotes">
