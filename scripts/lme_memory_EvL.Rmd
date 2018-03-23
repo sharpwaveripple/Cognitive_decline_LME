@@ -30,6 +30,7 @@ altIndex <- c("psychomotorspeed", "fluency", "responseinhibition", "attention",
               "executivefunction")
 df$cognitiveindex_nomem <- rowMeans(df[altIndex], na.rm=T)
 df$gmvnohv <- (df$gmv - df$hv)
+df$em <- (df$immediatememory + df$delayedmemory)/2
 df <- df[complete.cases(df[, c("lnwmh", "hv")]),]
 
 ```
@@ -120,9 +121,9 @@ stargazer(anova(model5, model4), summary = F, type="html")
 
 Both models with WMH only and HV only provided significantly better fit in comparison to the null model. The model with HV alone fit better than the model with WMH alone. Importantly, however, the model with both WMH and HV provided the best fit to the data. 
 
-## 3. Memory examined separately as long-term memory (i.e. immediate and delayed memory) and working memory
+## 3. Memory examined separately as episodic memory (i.e. immediate and delayed memory) and working memory
 
-Working memory and long-term memory were examined separately, as we have indications that they are affected differently by WMH and HV [^1].
+Working memory and episodic memory were examined separately, as we have indications that they are affected differently by WMH and HV [^1].
 
 ### 3a. Working memory
 
@@ -182,7 +183,97 @@ stargazer(anova(wm.model5, wm.model4), summary = F, type="html")
 
 ```
 
-### 3b. Immediate memory
+### 3b. Episodic memory
+
+Here we examined Episodic Memory separately.
+
+```{r}
+em.model1 <- lme4::lmer(em ~ 
+                       age06 + 
+                       time + 
+                       timesq +
+                       sex + 
+                       educationyears +
+                     (1 + time|rundmcs),
+                     data=df, REML=F)
+
+em.model2 <- lme4::lmer(em ~ age06 + time + timesq*lnwmh +
+                     sex + educationyears +
+                     (1 + time|rundmcs), 
+                     data=df, REML=F)
+
+em.model3 <- lme4::lmer(em ~ age06 + sex + time*hv + timesq  +
+                     sex + educationyears +
+                     (1 + time|rundmcs),
+                     data=df, REML=F)
+
+em.model4 <- lme4::lmer(em ~ age06 + time*hv + timesq*lnwmh +
+                     hv*lnwmh  + sex + educationyears +
+                     (1 + time|rundmcs),
+                     data=df, REML=F)
+
+em.model5 <- lme4::lmer(em ~ age06 + time*hv + timesq*lnwmh +
+                     sex + educationyears +
+                     (1 + time|rundmcs),
+                     data=df, REML=F)
+
+stargazer(em.model1, em.model2, em.model3, em.model4, 
+          title = "Fixed effects results",
+          ci=T, ci.level = .95, 
+          omit="Constant", dep.var.labels = "Episodic Memory",
+          order=c(1,6,7,2,4,5,8,3,10,9),
+          covariate.labels = c("Baseline age (years)", 
+                               "Sex",
+                               "Education (years)",
+                               "Time to follow-up (linear)", 
+                               "Time to follow-up (quadratic)", 
+                               "WMH", 
+                               "WMH progression",
+                               "HV", 
+                               "Hippocampal atrophy", 
+                               "WMH * HV interaction"),
+          star.cutoffs = c(0.05, 0.01, 0.001),
+          column.labels = c("Null", "WMH only", "HV only", "Full"),
+          initial.zero = F,
+          header=F, type="html")
+
+stargazer(anova(em.model5, em.model4), summary = F, type="html")
+
+```
+
+### Working memory vs. Episodic memory
+
+```{r}
+
+MemLabel <- c("Working Memory", "Episodic Memory")
+
+stargazer(wm.model1, wm.model2, wm.model3, wm.model4, em.model1, em.model2, em.model3, em.model4, 
+          title = "Fixed effects results",
+          ci=T, ci.level = .95, 
+          omit="Constant", dep.var.labels = MemLabel,
+          order=c(1,6,7,2,4,5,8,3,10,9),
+          covariate.labels = c("Baseline age (years)", 
+                               "Sex",
+                               "Education (years)",
+                               "Time to follow-up (linear)", 
+                               "Time to follow-up (quadratic)", 
+                               "WMH", 
+                               "WMH progression",
+                               "HV", 
+                               "Hippocampal atrophy", 
+                               "WMH * HV interaction"),
+          star.cutoffs = c(0.05, 0.01, 0.001),
+          column.labels = c("Null", "WMH only", "HV only", "Full", "Null", "WMH only", "HV only", "Full"),
+          initial.zero = F,
+          header=F, type="html")
+
+stargazer(anova(wm.model5, wm.model4), summary = F, type="html")
+stargazer(anova(em.model5, em.model4), summary = F, type="html")
+
+```
+
+
+### 3c. Immediate memory
 
 Here we examined Immediate Memory separately.
 
@@ -241,7 +332,7 @@ stargazer(anova(im.model5, im.model4), summary = F, type="html")
 ```
 
 
-### 3c. Delayed memory
+### 3d. Delayed memory
 
 Here we examined Delayed Memory separately.
 
@@ -426,6 +517,103 @@ stargazer(anova(spec.m.wmh, spec.m.hv, spec.m.gmv, spec.m.both), summary = F, ty
 ```
 
 The effect was not specific to hippocampal atrophy, as the interaction term of WMH with GMV was also significantly associated with memory performance. However, when GMV and HV were both included in the model, only the WMH-HV interaction remained significant. 
+
+
+### 4.3 Combined model with both HV & GMV interactions, seperately for WM vs EM
+
+
+```{r}
+
+spec.m.wmh.wm <- lme4::lmer(workingmemory ~ age06 + sex + educationyears +
+                          time + timesq + lnwmh + lnwmh:timesq + 
+                     (1 + time|rundmcs),
+                     data=df, REML=F)
+
+spec.m.hv.wm <- lme4::lmer(workingmemory ~ age06 + sex + educationyears +
+                          time + timesq + lnwmh + hv +
+                          lnwmh:timesq + hv:time + hv:lnwmh  + 
+                     (1 + time|rundmcs),
+                     data=df, REML=F)
+
+spec.m.gmv.wm <- lme4::lmer(workingmemory ~ age06 + sex + educationyears +
+                           time + timesq + lnwmh + gmvnohv +
+                           lnwmh:timesq + gmvnohv:time + gmvnohv:lnwmh +
+                     (1 + time|rundmcs),
+                     data=df, REML=F)
+
+spec.m.both.wm <- lme4::lmer(workingmemory ~ age06 + sex + educationyears +
+                          time + timesq + lnwmh + hv + gmvnohv +
+                           lnwmh:timesq + hv:time + gmvnohv:time +
+                            hv:lnwmh  + gmvnohv:lnwmh +
+                     (1 + time|rundmcs),
+                     data=df, REML=F)
+
+spec.m.both.wm.contr <- lme4::lmer(workingmemory ~ age06 + sex + educationyears +
+                          time + timesq + lnwmh + hv + gmvnohv +
+                           lnwmh:timesq + hv:time + gmvnohv:time +
+                     (1 + time|rundmcs),
+                     data=df, REML=F)
+
+
+spec.m.wmh.em <- lme4::lmer(em ~ age06 + sex + educationyears +
+                          time + timesq + lnwmh + lnwmh:timesq + 
+                     (1 + time|rundmcs),
+                     data=df, REML=F)
+
+spec.m.hv.em <- lme4::lmer(em ~ age06 + sex + educationyears +
+                          time + timesq + lnwmh + hv +
+                          lnwmh:timesq + hv:time + hv:lnwmh  + 
+                     (1 + time|rundmcs),
+                     data=df, REML=F)
+
+spec.m.gmv.em <- lme4::lmer(em ~ age06 + sex + educationyears +
+                           time + timesq + lnwmh + gmvnohv +
+                           lnwmh:timesq + gmvnohv:time + gmvnohv:lnwmh +
+                     (1 + time|rundmcs),
+                     data=df, REML=F)
+
+spec.m.both.em <- lme4::lmer(em ~ age06 + sex + educationyears +
+                          time + timesq + lnwmh + hv + gmvnohv +
+                           lnwmh:timesq + hv:time + gmvnohv:time +
+                            hv:lnwmh  + gmvnohv:lnwmh +
+                     (1 + time|rundmcs),
+                     data=df, REML=F)
+
+spec.m.both.em.contr <- lme4::lmer(em ~ age06 + sex + educationyears +
+                          time + timesq + lnwmh + hv + gmvnohv +
+                           lnwmh:timesq + hv:time + gmvnohv:time +
+                     (1 + time|rundmcs),
+                     data=df, REML=F)
+
+stargazer(spec.m.wmh.wm, spec.m.hv.wm, spec.m.gmv.wm, spec.m.both.wm, spec.m.wmh.em, spec.m.hv.em, spec.m.gmv.em, spec.m.both.em,
+          title = "Fixed effects results",
+          ci=T, ci.level = .95, 
+          omit="Constant", dep.var.labels = MemLabel,
+          order=c(1,2,3,4,5,6,9,7,10,11,8,12,13),
+          covariate.labels = c("Baseline age (years)", 
+                               "Sex",
+                               "Education (years)",
+                               "Time to follow-up (linear)", 
+                               "Time to follow-up (quadratic)", 
+                               "WMH", 
+                               "WMH progression",
+                               "HV", 
+                               "Hippocampal atrophy", 
+                               "WMH * HV interaction",
+                               "GMV",
+                               "GM atrophy",
+                               "WMH * GM interaction"),
+          star.cutoffs = c(0.05, 0.01, 0.001),
+          column.labels = c("WMH only", "WMH * HV", "WMH * GMV", "Both", "WMH only", "WMH * HV", "WMH * GMV", "Both"),
+          initial.zero = F,
+          header=F, type="html")
+
+stargazer(anova(spec.m.both.wm.contr, spec.m.both.wm), summary = F, type="html")
+stargazer(anova(spec.m.both.em.contr, spec.m.both.em), summary = F, type="html")
+
+```
+
+
 
 
 ## 5. Determine the specificity of the effect - Other cognitive domains
