@@ -29,7 +29,7 @@ df$lnwmh <- log(df$wmh)
 altIndex <- c("psychomotorspeed", "fluency", "responseinhibition", "attention",
               "executivefunction")
 df$cognitiveindex_nomem <- rowMeans(df[altIndex], na.rm=T)
-df$gmvnohv <- (df$gmv - df$hv)
+df$gmvnohv <- (df$gmv - df$hv)/100
 df$em <- (df$immediatememory + df$delayedmemory)/2
 df <- df[complete.cases(df[, c("lnwmh", "hv")]),]
 
@@ -585,7 +585,7 @@ spec.m.both.em.contr <- lme4::lmer(em ~ age06 + sex + educationyears +
                      (1 + time|rundmcs),
                      data=df, REML=F)
 
-stargazer(spec.m.wmh.wm, spec.m.hv.wm, spec.m.gmv.wm, spec.m.both.wm, spec.m.wmh.em, spec.m.hv.em, spec.m.gmv.em, spec.m.both.em,
+stargazer(spec.m.hv.wm, spec.m.gmv.wm, spec.m.both.wm, spec.m.hv.em, spec.m.gmv.em, spec.m.both.em,
           title = "Fixed effects results",
           ci=T, ci.level = .95, 
           omit="Constant", dep.var.labels = MemLabel,
@@ -604,7 +604,7 @@ stargazer(spec.m.wmh.wm, spec.m.hv.wm, spec.m.gmv.wm, spec.m.both.wm, spec.m.wmh
                                "GM atrophy",
                                "WMH * GM interaction"),
           star.cutoffs = c(0.05, 0.01, 0.001),
-          column.labels = c("WMH only", "WMH * HV", "WMH * GMV", "Both", "WMH only", "WMH * HV", "WMH * GMV", "Both"),
+          column.labels = c("WMH * HV", "WMH * GMV", "Both", "WMH * HV", "WMH * GMV", "Both"),
           initial.zero = F,
           header=F, type="html")
 
